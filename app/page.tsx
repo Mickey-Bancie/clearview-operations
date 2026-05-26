@@ -257,12 +257,12 @@ export default function ClearviewOperationsHomepage() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-8 border-l border-blue-700/50 pl-8">
-            {[
+            {([
               [Eye, "Clarity Over Complexity", "We strip away the noise and give you a clear picture of what’s actually happening in your business."],
-              [Activity, "Results, Not Reports", "Every engagement is designed around measurable outcomes — not deliverables that sit on a shelf."],
+              [Activity, "Results, Not justReports", "Every engagement is designed around measurable outcomes — not justdeliverables that sit on a shelf."],
               [Users, "Partnership Mindset", "We embed ourselves in your work as invested partners — not outside observers passing judgment."],
-            ].map(([Icon, title, text]) => (
-              <div key={title} className="flex gap-6">
+            ] as const).map(([Icon, title, text], index) => (
+              <div key={String(title)} className="flex gap-6">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border border-blue-700/60 bg-blue-950/70 text-blue-400">
                   <Icon className="h-7 w-7" />
                 </div>
@@ -456,7 +456,11 @@ export default function ClearviewOperationsHomepage() {
               Start with a free 30-minute consultation. Tell us a little about your business and we'll be in touch within one business day.
             </p>
             <div className="mt-10 space-y-6">
-              {[[Phone, "Phone", "(501) 243-6171"], [Mail, "Email", "info@clearviewops.tech"], [Timer, "Response Time", "Within 1 business day"]].map(([Icon, label, value]) => (
+              {([
+  [Phone, "Phone", "(501) 243-6171"],
+  [Mail, "Email", "info@clearviewops.tech"],
+  [Timer, "Response Time", "Within 1 business day"],
+] as const).map(([Icon, label, value], index) => (
                 <div key={label} className="flex items-center gap-5">
                   <div className="flex h-14 w-14 items-center justify-center rounded-sm border border-blue-700 text-blue-400"><Icon className="h-6 w-6" /></div>
                   <div>
