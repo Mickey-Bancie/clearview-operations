@@ -479,7 +479,7 @@ export default function ClearviewOperationsHomepage() {
 >
    <input
     type="hidden"
-    name="_next"
+    name="_redirect"
     value="https://clearviewops.tech/#contact"
   />
   <h3 className="font-serif text-3xl font-black text-slate-800">
@@ -497,6 +497,7 @@ export default function ClearviewOperationsHomepage() {
       <input
         type="text"
         name="firstName"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="Jane"
       />
@@ -507,6 +508,7 @@ export default function ClearviewOperationsHomepage() {
       <input
         type="text"
         name="lastName"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="Smith"
       />
@@ -517,6 +519,7 @@ export default function ClearviewOperationsHomepage() {
       <input
         type="text"
         name="businessName"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="Smith's Bakery"
       />
@@ -527,6 +530,7 @@ export default function ClearviewOperationsHomepage() {
       <input
         type="email"
         name="email"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="jane@yourbusiness.com"
       />
@@ -537,6 +541,7 @@ export default function ClearviewOperationsHomepage() {
       <input
         type="tel"
         name="phone"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="(501) 555-0123"
       />
@@ -547,6 +552,7 @@ export default function ClearviewOperationsHomepage() {
 
       <select
         name="service"
+        required
         className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
       >
         <option>Select a service...</option>
@@ -563,6 +569,7 @@ export default function ClearviewOperationsHomepage() {
 
       <textarea
         name="message"
+        required
         className="mt-2 min-h-28 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
         placeholder="What challenges are you facing? What would a win look like for you?"
       />
