@@ -1,5 +1,7 @@
 "use client";
 
+import NextLink from "next/link";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -19,6 +21,7 @@ import {
   Star,
   Menu,
   X,
+  Link,
 } from "lucide-react";
 
 const logoSrc = "/logo.png";
@@ -482,6 +485,11 @@ export default function ClearviewOperationsHomepage() {
     name="_redirect"
     value="https://clearviewops.tech/#contact"
   />
+  <input
+  type="hidden"
+  name="_next"
+  value="https://clearviewops.tech/#contact"
+/>
   <h3 className="font-serif text-3xl font-black text-slate-800">
     Request a Free Consultation
   </h3>
@@ -600,6 +608,14 @@ export default function ClearviewOperationsHomepage() {
             <a href="#about">About</a>
             <a href="#results">Results</a>
             <a href="#contact">Contact</a>
+            
+            <NextLink
+        href="/privacy-policy"
+        className="text-sm text-slate-400 transition hover:text-white"
+      >
+        Privacy Policy
+      </NextLink>  
+
           </div>
         </div>
         <div className="mx-auto mt-6 max-w-7xl text-xs text-slate-600">© 2026 Aura Global Holdings, LLC. All rights reserved.</div>
