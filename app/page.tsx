@@ -472,7 +472,9 @@ export default function ClearviewOperationsHomepage() {
             </div>
           </div>
 
-          <form className="rounded-lg bg-white p-9 text-slate-900 shadow-2xl">
+          <form action="https://formspree.io/f/xqejrqol"
+  method="POST"
+  className="grid gap-6 md:grid-cols-2"></form>
             <h3 className="font-serif text-3xl font-black text-slate-800">Request a Free Consultation</h3>
             <p className="mt-2 text-slate-500">Fill out the form and we'll reach out to schedule your call.</p>
             <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -494,7 +496,16 @@ export default function ClearviewOperationsHomepage() {
             <button type="button" className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white transition hover:bg-blue-500">
               Send My Request <ArrowRight className="ml-2 inline h-4 w-4" />
             </button>
-          </form>
+          <form>
+
+   <button
+    type="submit"
+    className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white"
+  >
+    Send My Request
+  </button>
+
+</form>
         </div>
       </section>
 
