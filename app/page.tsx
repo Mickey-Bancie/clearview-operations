@@ -477,6 +477,11 @@ export default function ClearviewOperationsHomepage() {
   method="POST"
   className="rounded-lg bg-white p-9 text-slate-900 shadow-2xl"
 >
+   <input
+    type="hidden"
+    name="_next"
+    value="https://clearviewops.tech/#contact"
+  />
   <h3 className="font-serif text-3xl font-black text-slate-800">
     Request a Free Consultation
   </h3>
