@@ -472,37 +472,104 @@ export default function ClearviewOperationsHomepage() {
             </div>
           </div>
 
-          <form action="https://formspree.io/f/xqejrqol"
+          <form
+  action="https://formspree.io/f/xqejrqol"
   method="POST"
-  className="grid gap-6 md:grid-cols-2"></form>
-            <h3 className="font-serif text-3xl font-black text-slate-800">Request a Free Consultation</h3>
-            <p className="mt-2 text-slate-500">Fill out the form and we'll reach out to schedule your call.</p>
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800">First Name<input className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="Jane" /></label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800">Last Name<input className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="Smith" /></label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">Business Name<input className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="Smith's Bakery" /></label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800">Email<input className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="jane@yourbusiness.com" /></label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800">Phone<input className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="(501) 555-0123" /></label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">Service You're Interested In<select className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"><option>Select a service...</option>
-    <option>Customer Experience & Service Audits</option>
-    <option>Project & Program Management</option>
-    <option>Operations Consulting</option>
-    <option>Process Improvement</option>
-    <option>General Consultation</option>
-  </select>
-</label>
-              <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">Tell Us About Your Business<textarea className="mt-2 min-h-28 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal" placeholder="What challenges are you facing? What would a win look like for you?" /></label>
-            </div>
-            <button type="button" className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white transition hover:bg-blue-500">
-              Send My Request <ArrowRight className="ml-2 inline h-4 w-4" />
-            </button>
-          <form>
+  className="rounded-lg bg-white p-9 text-slate-900 shadow-2xl"
+>
+  <h3 className="font-serif text-3xl font-black text-slate-800">
+    Request a Free Consultation
+  </h3>
 
-   <button
+  <p className="mt-2 text-slate-500">
+    Fill out the form and we'll reach out to schedule your call.
+  </p>
+
+  <div className="mt-8 grid gap-5 md:grid-cols-2">
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800">
+      First Name
+      <input
+        type="text"
+        name="firstName"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="Jane"
+      />
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800">
+      Last Name
+      <input
+        type="text"
+        name="lastName"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="Smith"
+      />
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
+      Business Name
+      <input
+        type="text"
+        name="businessName"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="Smith's Bakery"
+      />
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800">
+      Email
+      <input
+        type="email"
+        name="email"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="jane@yourbusiness.com"
+      />
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800">
+      Phone
+      <input
+        type="tel"
+        name="phone"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="(501) 555-0123"
+      />
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
+      Service You're Interested In
+
+      <select
+        name="service"
+        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+      >
+        <option>Select a service...</option>
+        <option>Customer Experience & Service Audits</option>
+        <option>Project & Program Management</option>
+        <option>Operations Consulting</option>
+        <option>Process Improvement</option>
+        <option>General Consultation</option>
+      </select>
+    </label>
+
+    <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
+      Tell Us About Your Business
+
+      <textarea
+        name="message"
+        className="mt-2 min-h-28 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        placeholder="What challenges are you facing? What would a win look like for you?"
+      />
+    </label>
+
+  </div>
+
+  <button
     type="submit"
-    className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white"
+    className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white transition hover:bg-blue-500"
   >
-    Send My Request
+    Send My Request <ArrowRight className="ml-2 inline h-4 w-4" />
   </button>
 
 </form>
