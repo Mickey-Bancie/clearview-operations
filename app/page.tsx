@@ -188,7 +188,7 @@ useEffect(() => {
 
           <div className="hidden lg:block">
             <a href="#contact" className="rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg transition hover:bg-blue-500">
-              Free Consultation
+              Schedule A Free Consultation
             </a>
           </div>
 
