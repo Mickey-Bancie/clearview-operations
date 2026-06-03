@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -138,6 +138,28 @@ function SectionLabel({
 
 export default function ClearviewOperationsHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+const [lastScrollY, setLastScrollY] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY < 80) {
+      setShowNavbar(true);
+    } else if (window.scrollY > lastScrollY) {
+      setShowNavbar(false);
+    } else {
+      setShowNavbar(true);
+    }
+
+    setLastScrollY(window.scrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [lastScrollY]);
 
   const navLinks = [
     { label: "Home", href: "#home" },
@@ -149,7 +171,10 @@ export default function ClearviewOperationsHomepage() {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      <header className="sticky top-0 z-50 border-b border-blue-800/40 bg-[#071a35]/95 backdrop-blur">
+      <header className={`fixed top-0 z-50 w-full border-b border-blue-800/40 bg-[#071a35]/95 backdrop-blur transition-transform duration-300 ${
+    showNavbar ? "translate-y-0" : "-translate-y-full"
+  }`}
+>
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <Logo light />
 
@@ -205,8 +230,8 @@ export default function ClearviewOperationsHomepage() {
             </div>
           </motion.div>
         )}
-      </header>
-
+  
+  </header>
       <section id="home" className="relative overflow-hidden bg-[#071a35] text-white">
         <div className="absolute inset-0">
           <img
