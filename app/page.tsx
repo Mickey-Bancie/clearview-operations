@@ -232,7 +232,7 @@ useEffect(() => {
         )}
   
   </header>
-      <section id="home" className="relative overflow-hidden bg-[#071a35] text-white">
+      <section id="home" className="relative overflow-hidden bg-[#071a35] pt-24 text-white">
         <div className="absolute inset-0">
           <img
             src="/mountains.jpg"
