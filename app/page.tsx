@@ -263,7 +263,7 @@ useEffect(() => {
             <div className="mt-8 flex flex-wrap gap-4">
               {[
                 ["30–90 Days", "Structured implementation support"],
-                ["4 Core Services", "Operations, projects, CX, process"],
+                ["4 Core Services", " Customer Experience, Projects, Operations, Process"],
                 ["Built for SMBs", "Practical consulting for growing businesses"],
               ].map(([title, subtitle]) => (
                 <motion.div
