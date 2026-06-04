@@ -225,7 +225,7 @@ useEffect(() => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition hover:bg-blue-500"
               >
-                Free Consultation
+               Schedule Free Consultation
               </a>
             </div>
           </motion.div>
