@@ -164,6 +164,7 @@ useEffect(() => {
   const navLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
+    { label: "About", href: "/about" },
         { label: "Who We Serve", href: "#serve" },
     { label: "Results", href: "#results" },
     { label: "Contact", href: "#contact" },
@@ -620,7 +621,7 @@ useEffect(() => {
           </div>
           <div className="flex gap-8 text-sm">
             <a href="#services">Services</a>
-            <a href="#about">About</a>
+            <NextLink href="/about">About</NextLink>
             <a href="#results">Results</a>
             <a href="#contact">Contact</a>
             
