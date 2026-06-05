@@ -235,11 +235,18 @@ useEffect(() => {
   </header>
       <section id="home" className="relative overflow-hidden bg-[#071a35] pt-24 text-white">
         <div className="absolute inset-0">
-          <img
-            src="/mountains.jpg"
-            alt="Mountain background"
-            className="h-full w-full object-cover opacity-55"
-          />
+          <motion.img
+  src="/mountains.jpg"
+  alt="Mountain background"
+  initial={{ scale: 1.04 }}
+  animate={{ y: [0, 12, 0] }}
+  transition={{
+    duration: 18,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="h-full w-full object-cover opacity-55"
+/>
           <div className="absolute inset-0 bg-gradient-to-r from-[#04142d]/75 via-[#04142d]/55 to-[#04142d]/35" />
         </div>
         <div className="absolute inset-y-0 right-0 hidden w-1/2 opacity-40 md:block">
