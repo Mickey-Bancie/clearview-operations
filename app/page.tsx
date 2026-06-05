@@ -188,7 +188,7 @@ useEffect(() => {
           </div>
 
           <div className="hidden lg:block">
-            <a href="#contact" className="rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg transition hover:bg-blue-500">
+            <a href="#contact" className="group rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500">
               Schedule Free Consultation
             </a>
           </div>
@@ -224,7 +224,7 @@ useEffect(() => {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition hover:bg-blue-500"
+                className="group mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500"
               >
                Schedule Free Consultation
               </a>
@@ -322,7 +322,7 @@ useEffect(() => {
               <motion.article
                 whileHover={{ y: -6 }}
                 key={service.title}
-                className={`relative overflow-hidden rounded-2xl border p-8 shadow-xl transition ${
+                className={`relative overflow-hidden rounded-2xl border p-8 shadow-xl transition duration-300 hover:scale-[1.01] hover:shadow-2xl ${
                   service.featured
                     ? "border-blue-500/70 bg-[#071a35] text-white shadow-blue-500/20"
                     : "border-slate-200 bg-white text-slate-800 shadow-slate-200/80"
