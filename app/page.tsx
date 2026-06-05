@@ -271,7 +271,7 @@ useEffect(() => {
             <div className="mt-8 flex flex-wrap gap-4">
               {[
                 ["30–90 Days", "Structured implementation support"],
-                ["4 Core Services", " Customer Experience, Projects, Operations, Process"],
+                ["4 Core Services", " Customer Experience, Projects, Operations, UX-Informed Process Clarity"],
                 ["Built for SMBs", "Practical consulting for growing businesses"],
               ].map(([title, subtitle]) => (
                 <motion.div
@@ -285,7 +285,10 @@ useEffect(() => {
               ))}
             </div>
             <p className="mt-8 max-w-xl text-lg leading-8 text-slate-200">
-              Clearview Operations is a business and management consulting firm built for organizations that are ready to run better. We bring structure, outside perspective, and hands-on expertise to help you close the gap between where you are and where you want to be.
+              Clearview Operations is a business and management consulting firm built for organizations that are ready to run better. We bring structure, outside perspective, and hands-on expertise to help you close the gap between where you are and where you want to be. Clearview Operations combines operational analysis with UX-informed thinking to improve 
+customer experiences, workflows, and service clarity.
+
+
             </p>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">
               Whether you need a clearer view of your operations, tighter project execution, or more efficient processes — we get in the trenches and do the work alongside you.
