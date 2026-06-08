@@ -516,64 +516,69 @@ customer experiences, workflows, and service clarity.
           <form
   action="https://formspree.io/f/xqejrqol"
   method="POST"
-  className="rounded-lg bg-white p-9 text-slate-900 shadow-2xl"
+  className="rounded-2xl border border-slate-200 bg-white p-10 text-slate-900 shadow-[0_20px_60px_rgba(0,0,0,0.15)] backdrop-blur"
 >
-  <h3 className="font-serif text-3xl font-black text-slate-800">
+  <h3 className="text-center text-3xl font-black uppercase tracking-tight text-[#0b3a67]">
     Request a Free Consultation
   </h3>
-
+<div className="mx-auto mt-4 h-[2px] w-32 bg-blue-500" />
   <p className="mt-2 text-slate-500">
     Fill out the form and we'll reach out to schedule your call.
   </p>
 
+  <p className="mt-2 text-right text-sm text-slate-500">
+  All fields marked with{" "}
+  <span className="font-semibold text-red-500">*</span> are required.
+</p>
+
   <div className="mt-8 grid gap-5 md:grid-cols-2">
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800">
-      First Name
+      First Name <span className="text-red-500">*</span>
       <input
         type="text"
         name="firstName"
         required
-        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         placeholder="Jane"
       />
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800">
-      Last Name
+      Last Name <span className="text-red-500">*</span>
       <input
         type="text"
         name="lastName"
         required
-        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         placeholder="Smith"
       />
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
-      Business Name
+      Business Name <span className="text-red-500">*</span>
       <input
         type="text"
         name="businessName"
         required
-        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         placeholder="Smith's Bakery"
       />
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800">
-      Email
+      Email <span className="text-red-500">*</span>
       <input
         type="email"
         name="email"
         required
-        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         placeholder="jane@yourbusiness.com"
       />
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800">
-      Phone
+      Phone <span className="text-red-500">*</span>
       <input
         type="tel"
         name="phone"
@@ -584,12 +589,12 @@ customer experiences, workflows, and service clarity.
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
-      Service You're Interested In
+      Service You're Interested In First Name <span className="text-red-500">*</span>
 
       <select
         name="service"
         required
-        className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
       >
         <option>Select a service...</option>
         <option>Customer Experience & Service Audits</option>
@@ -601,21 +606,56 @@ customer experiences, workflows, and service clarity.
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
-      Tell Us About Your Business
+      Tell Us About Your Business First Name <span className="text-red-500">*</span>
 
       <textarea
         name="message"
         required
-        className="mt-2 min-h-28 w-full rounded-md border border-slate-300 px-4 py-3 font-normal normal-case tracking-normal"
+        maxLength={500}
+        className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition-all duration-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
         placeholder="What challenges are you facing? What would a win look like for you?"
       />
+      <p className="mt-2 text-xs text-slate-500">
+  Maximum of 500 characters allowed.
+</p>
     </label>
 
   </div>
 
+<p className="mt-6 text-sm leading-6 text-slate-500">
+  This site is protected by reCAPTCHA and the Google{" "}
+  <a
+    href="https://policies.google.com/privacy"
+    target="_blank"
+    className="text-blue-600 underline"
+  >
+    Privacy Policy
+  </a>{" "}
+  and{" "}
+  <a
+    href="https://policies.google.com/terms"
+    target="_blank"
+    className="text-blue-600 underline"
+  >
+    Terms of Service
+  </a>{" "}
+  apply.
+</p>
+
+<p className="mt-4 text-sm leading-6 text-slate-500">
+  By submitting this form, you acknowledge that Clearview Operations may collect
+  and process your information in accordance with our{" "}
+  <NextLink
+    href="/privacy-policy"
+    className="text-blue-600 underline"
+  >
+    Privacy Policy
+  </NextLink>.
+</p>
+
   <button
     type="submit"
-    className="mt-6 w-full rounded-md bg-blue-600 px-6 py-4 font-black text-white transition hover:bg-blue-500"
+    className="mt-8 w-full rounded-lg bg-[#0b3a67] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:scale-[1.01] hover:bg-blue-700"
   >
     Send My Request <ArrowRight className="ml-2 inline h-4 w-4" />
   </button>
