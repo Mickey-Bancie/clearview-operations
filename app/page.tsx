@@ -143,13 +143,11 @@ const [lastScrollY, setLastScrollY] = useState(0);
 
 useEffect(() => {
   const handleScroll = () => {
-    if (window.scrollY < 80) {
-      setShowNavbar(true);
-    } else if (window.scrollY > lastScrollY) {
-      setShowNavbar(false);
-    } else {
-      setShowNavbar(true);
-    }
+    if (window.scrollY < 10) {
+  setShowNavbar(true);
+} else {
+  setShowNavbar(false);
+}
 
     setLastScrollY(window.scrollY);
   };
@@ -172,8 +170,12 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      <header className={`fixed top-0 z-50 w-full border-b border-blue-800/40 bg-[#071a35]/95 backdrop-blur transition-transform duration-300 ${
+      <header   className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
     showNavbar ? "translate-y-0" : "-translate-y-full"
+  } ${
+    lastScrollY > 20
+      ? "border-white/10 bg-[#071a35]/70 backdrop-blur-xl shadow-lg"
+      : "border-transparent bg-transparent"
   }`}
 >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
