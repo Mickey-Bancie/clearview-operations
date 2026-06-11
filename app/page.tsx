@@ -76,7 +76,17 @@ const whyItems = [
   { icon: Phone, title: "Hands-On Support", text: "You work directly with consultants invested in your success, not just your invoice." },
 ];
 
-const industries = ["Retail", "Restaurants & Food Service", "Healthcare Clinics", "Salons & Spas", "Hospitality", "Auto Dealerships", "Financial Services", "Professional Services", "Gyms & Fitness"];
+const industries = [
+  { label: "Retail", href: "/industries/retail" },
+  { label: "Restaurants & Food Service", href: "/industries/restaurants-food-service" },
+  { label: "Healthcare Clinics", href: "/industries/healthcare-clinics" },
+  { label: "Salons & Spas", href: "/industries/salons-spas" },
+  { label: "Hospitality", href: "/industries/hospitality" },
+  { label: "Auto Dealerships", href: "/industries/auto-dealerships" },
+  { label: "Financial Services", href: "/industries/financial-services" },
+  { label: "Professional Services", href: "/industries/professional-services" },
+  { label: "Gyms & Fitness", href: "/industries/gyms-fitness" },
+];
 
 const process = [
   { title: "Discovery Call", text: "We learn about your business, pain points, and goals in a free 30-minute consultation." },
@@ -442,9 +452,18 @@ customer experiences, workflows, and service clarity.
           <p className="mt-6 max-w-lg text-lg leading-8 text-slate-500">
             We work with small businesses across industries — any organization with a customer-facing component and a desire to operate at a higher level.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            {industries.map((industry, index) => (
-              <span key={industry} className={`rounded-full border px-5 py-2 text-sm font-semibold ${index === 0 ? "border-blue-600 bg-blue-600 text-white" : "border-slate-300 bg-white text-slate-700"}`}>{industry}</span>
+          <div className="mt-8 flex flex-wrap gap-3">
+  {industries.map((industry, index) => (
+    <div
+      key={industry.label}
+      className={`cursor-pointer rounded-full border px-5 py-2 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-600 hover:text-white hover:shadow-[0_0_24px_rgba(37,99,235,0.45)] ${
+        index === 0
+          ? "border-blue-600 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.35)]"
+          : "border-slate-300 bg-white text-slate-800"
+      }`}
+    >
+      {industry.label}
+    </div>
             ))}
           </div>
         </div>
