@@ -274,7 +274,7 @@ useEffect(() => {
               {[
                 ["30–90 Days", "Structured implementation support"],
                 ["4 Core Services", " Customer Experience, Projects, Operations, UX-Informed Process Clarity"],
-                ["Built for SMBs", "Practical consulting for growing businesses"],
+                ["Built for Modern Businesses", "Practical consulting for growing businesses"],
               ].map(([title, subtitle]) => (
                 <motion.div
                   whileHover={{ y: -4 }}
@@ -300,7 +300,7 @@ customer experiences, workflows, and service clarity.
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="space-y-8 border-l border-blue-700/50 pl-8">
             {([
               [Eye, "Clarity Over Complexity", "We strip away the noise and give you a clear picture of what’s actually happening in your business."],
-              [Activity, "Results, Not justReports", "Every engagement is designed around measurable outcomes — not justdeliverables that sit on a shelf."],
+              [Activity, "Results, Not just Reports", "Every engagement is designed around measurable outcomes — not justdeliverables that sit on a shelf."],
               [Users, "Partnership Mindset", "We embed ourselves in your work as invested partners — not outside observers passing judgment."],
             ] as const).map(([Icon, title, text], index) => (
               <div key={String(title)} className="flex gap-6">
@@ -498,7 +498,7 @@ customer experiences, workflows, and service clarity.
             </p>
             <div className="mt-10 space-y-6">
               {([
-  [Phone, "Phone", "(501) 243-6171"],
+  [Phone, "Phone", "+1(501) 243-6171"],
   [Mail, "Email", "info@clearviewops.tech"],
   [Timer, "Response Time", "Within 1 business day"],
 ] as const).map(([Icon, label, value], index) => (
@@ -589,7 +589,7 @@ customer experiences, workflows, and service clarity.
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
-      Service You're Interested In First Name <span className="text-red-500">*</span>
+      Service You're Interested In <span className="text-red-500">*</span>
 
       <select
         name="service"
@@ -606,7 +606,7 @@ customer experiences, workflows, and service clarity.
     </label>
 
     <label className="text-xs font-black uppercase tracking-widest text-slate-800 md:col-span-2">
-      Tell Us About Your Business First Name <span className="text-red-500">*</span>
+      Tell Us About Your Business <span className="text-red-500">*</span>
 
       <textarea
         name="message"
@@ -668,7 +668,7 @@ customer experiences, workflows, and service clarity.
         <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <Logo light />
           <div className="text-center text-sm md:text-left">
-            <p>(501) 243-6171</p>
+            <p>+1(501) 243-6171</p>
             <p>info@clearviewops.tech</p>
           </div>
           <div className="flex gap-8 text-sm">
