@@ -122,7 +122,7 @@ const testimonials = [
 function Logo({ light = false }) {
   return (
     <a href="#home" className="flex items-center gap-3">
-      <img src={logoSrc} alt="Clearview Operations" className="h-24 w-auto rounded-sm object-contain drop-shadow-x1" />
+      <img src={logoSrc} alt="Clearview Operations" className="h-24 w-auto rounded-sm object-contain drop-shadow-x1 sm:h-24" />
       <div className="leading-none">
         <div className={`font-serif text-xl font-black tracking-tight ${light ? "text-white" : "text-blue-950"}`}>
           CLEAR<span className="text-blue-500">VIEW</span>
@@ -193,7 +193,7 @@ useEffect(() => {
       : "border-transparent bg-transparent"
   }`}
 >
-  <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3">
+  <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
     <div className="shrink-0">
       <Logo light />
     </div>
@@ -223,7 +223,7 @@ useEffect(() => {
       type="button"
       aria-label="Toggle mobile menu"
       onClick={() => setMobileMenuOpen((open) => !open)}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
+      className="mr-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
     >
       {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
     </button>
