@@ -183,7 +183,7 @@ useEffect(() => {
   ];
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <main className="min-h-screen w-full overflow-x-hidden bg-white text-slate-900">
       <header
   className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
     showNavbar ? "translate-y-0" : "-translate-y-full"
@@ -223,7 +223,7 @@ useEffect(() => {
       type="button"
       aria-label="Toggle mobile menu"
       onClick={() => setMobileMenuOpen((open) => !open)}
-      className="mr-2 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
+      className="4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
     >
       {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
     </button>
@@ -278,7 +278,7 @@ useEffect(() => {
         <div className="absolute inset-y-0 right-0 hidden w-1/2 opacity-40 md:block">
           <div className="h-full w-full bg-[radial-gradient(circle_at_65%_45%,rgba(96,165,250,0.32),transparent_28%),linear-gradient(90deg,#071a35_0%,rgba(7,26,53,0.72)_45%,rgba(7,26,53,0.25)_100%)]" />
         </div>
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
