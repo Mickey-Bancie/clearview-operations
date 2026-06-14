@@ -153,13 +153,17 @@ const [lastScrollY, setLastScrollY] = useState(0);
 
 useEffect(() => {
   const handleScroll = () => {
-    if (window.scrollY < 10) {
-  setShowNavbar(true);
-} else {
-  setShowNavbar(false);
-}
+    const currentScrollY = window.scrollY;
 
-    setLastScrollY(window.scrollY);
+    if (currentScrollY < 10) {
+      setShowNavbar(true);
+    } else if (currentScrollY < lastScrollY) {
+      setShowNavbar(true);
+    } else if (currentScrollY > lastScrollY) {
+      setShowNavbar(false);
+    }
+
+    setLastScrollY(currentScrollY);
   };
 
   window.addEventListener("scroll", handleScroll);
@@ -180,7 +184,8 @@ useEffect(() => {
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      <header   className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
+      <header
+  className={`fixed top-0 left-0 z-50 w-full border-b transition-all duration-300 ${
     showNavbar ? "translate-y-0" : "-translate-y-full"
   } ${
     lastScrollY > 20
@@ -188,64 +193,73 @@ useEffect(() => {
       : "border-transparent bg-transparent"
   }`}
 >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-          <Logo light />
+  <nav className="mx-auto flex max-w-7xl items-center justify-between px-8 py-3">
+    <div className="shrink-0">
+      <Logo light />
+    </div>
 
-          <div className="hidden items-center gap-9 text-xs font-black uppercase tracking-wide text-slate-200 lg:flex">
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-blue-400">
-                {link.label}
-              </a>
-            ))}
-          </div>
+    <div className="hidden flex-1 items-center justify-center gap-6 whitespace-nowrap text-xs font-black uppercase tracking-wide text-slate-200 lg:flex">
+      {navLinks.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          className="nav-ink-tab px-3 py-2 transition hover:text-blue-400"
+        >
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
 
-          <div className="hidden lg:block">
-            <a href="#contact" className="group rounded-md bg-blue-600 px-6 py-3 text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500">
-              Schedule Free Consultation
-            </a>
-          </div>
+    <div className="hidden shrink-0 justify-end lg:flex">
+      <a
+        href="#contact"
+        className="nav-ink-tab rounded-full bg-blue-600 px-6 py-3 text-sm font-black text-white transition hover:bg-blue-500"
+      >
+        <span>Schedule Free Consultation</span>
+      </a>
+    </div>
 
-          <button
-            type="button"
-            aria-label="Toggle mobile menu"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
+    <button
+      type="button"
+      aria-label="Toggle mobile menu"
+      onClick={() => setMobileMenuOpen((open) => !open)}
+      className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-blue-700/70 text-white transition hover:bg-blue-950 lg:hidden"
+    >
+      {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+    </button>
+  </nav>
+
+  {mobileMenuOpen && (
+    <motion.div
+      initial={{ opacity: 0, y: -12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col gap-2">
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={() => setMobileMenuOpen(false)}
+            className="rounded-md px-4 py-3 text-sm font-black uppercase tracking-wide text-slate-200 transition hover:bg-blue-950 hover:text-blue-400"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </nav>
+            {link.label}
+          </a>
+        ))}
 
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            className="border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
-          >
-            <div className="mx-auto flex max-w-7xl flex-col gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-md px-4 py-3 text-sm font-black uppercase tracking-wide text-slate-200 transition hover:bg-blue-950 hover:text-blue-400"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="group mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500"
-              >
-               Schedule Free Consultation
-              </a>
-            </div>
-          </motion.div>
-        )}
-  
-  </header>
-      <section id="home" className="relative overflow-hidden bg-[#071a35] pt-24 text-white">
+        <a
+          href="#contact"
+          onClick={() => setMobileMenuOpen(false)}
+          className="mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500"
+        >
+          Schedule Free Consultation
+        </a>
+      </div>
+    </motion.div>
+  )}
+</header>
+      <section id="home" className="relative overflow-hidden bg-[#071a35] pt-28 text-white">
         <div className="absolute inset-0">
           <motion.img
   src="/mountains.jpg"
@@ -270,7 +284,7 @@ useEffect(() => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7 }}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/40 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white backdrop-blur"
+              className="ink-card mb-6 inline-flex items-center gap-3 rounded-full border border-white/40 bg-white/10 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-white backdrop-blur"
             >
               <span className="h-2 w-2 rounded-full bg-blue-400" />
               Helping Businesses Operate With Clarity
@@ -289,7 +303,7 @@ useEffect(() => {
                 <motion.div
                   whileHover={{ y: -4 }}
                   key={title}
-                  className="rounded-xl border border-blue-700/50 bg-blue-950/40 px-5 py-4 backdrop-blur"
+                 className="ink-card rounded-xl border border-blue-700/50 bg-blue-950/40 px-5 py-4 backdrop-blur"
                 >
                   <p className="text-xl font-black text-white">{title}</p>
                   <p className="mt-1 text-sm text-slate-300">{subtitle}</p>
@@ -456,7 +470,7 @@ customer experiences, workflows, and service clarity.
   {industries.map((industry, index) => (
     <div
       key={industry.label}
-      className={`cursor-pointer rounded-full border px-5 py-2 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-600 hover:text-white hover:shadow-[0_0_24px_rgba(37,99,235,0.45)] ${
+      className={`ink-card cursor-pointer rounded-full border px-5 py-2 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-600 hover:text-white hover:shadow-[0_0_24px_rgba(37,99,235,0.45)] ${
         index === 0
           ? "border-blue-600 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.35)]"
           : "border-slate-300 bg-white text-slate-800"
