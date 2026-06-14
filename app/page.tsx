@@ -704,7 +704,7 @@ customer experiences, workflows, and service clarity.
             <p>+1(501) 243-6171</p>
             <p>info@clearviewops.tech</p>
           </div>
-          <div className="flex gap-8 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
             <a href="#services">Services</a>
             <NextLink href="/about">About</NextLink>
             <a href="#results">Results</a>
