@@ -121,14 +121,14 @@ const testimonials = [
 
 function Logo({ light = false }) {
   return (
-    <a href="#home" className="flex items-center gap-3">
+    <a href="#home" className="flex min-w-0 items-center gap-3">
       <img src={logoSrc} alt="Clearview Operations" className="h-24 w-auto rounded-sm object-contain drop-shadow-x1 sm:h-24" />
-      <div className="leading-none">
+      <div className="min-w-0 leading-none">
         <div className={`font-serif text-xl font-black tracking-tight ${light ? "text-white" : "text-blue-950"}`}>
           CLEAR<span className="text-blue-500">VIEW</span>
         </div>
         <div className={`-mt-1 font-serif text-lg font-black ${light ? "text-white" : "text-blue-950"}`}>Operations</div>
-        <div className="mt-1 max-w-[160px] text-[10px] uppercase leading-tight tracking-[0.12em] text-slate-400">
+        <div className="mt-1 max-w-[150px] text-[9px] uppercase leading-tight tracking-[0.08em] text-slate-400 sm:max-w-[160px] sm:text-[10px] sm:tracking-[0.12em]">
           A DBA of Aura Global Holdings, LLC
         </div>
       </div>
@@ -234,7 +234,7 @@ useEffect(() => {
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
+      className="w-full overflow-x-hidden border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-2">
         {navLinks.map((link) => (
@@ -251,7 +251,7 @@ useEffect(() => {
         <a
           href="#contact"
           onClick={() => setMobileMenuOpen(false)}
-          className="mt-2 rounded-md bg-blue-600 px-4 py-3 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:scale-[1.02] hover:bg-blue-500"
+          className="mt-2 rounded-xl bg-blue-600 px-4 py-4 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:bg-blue-500"
         >
           Schedule Free Consultation
         </a>
