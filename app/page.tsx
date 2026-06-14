@@ -525,9 +525,9 @@ customer experiences, workflows, and service clarity.
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
           <div>
             <SectionLabel light>Get In Touch</SectionLabel>
-            <h2 className="font-serif text-4xl font-black leading-tight">Ready to See Your Business Clearly?</h2>
+            <h2 className="font-serif text-4xl font-black leading-tight">Ready for Operational Clarity?</h2>
             <p className="mt-7 max-w-sm text-lg leading-8 text-slate-300">
-              Start with a free 30-minute consultation. Tell us a little about your business and we'll be in touch within one business day.
+              Start with a free 30-minute consultation. Tell us a bit about your business and we'll be in touch within one business day.
             </p>
             <div className="mt-10 space-y-6">
               {([
