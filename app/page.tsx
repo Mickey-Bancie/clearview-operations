@@ -242,7 +242,7 @@ useEffect(() => {
             key={link.href}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="rounded-md px-4 py-3 text-sm font-black uppercase tracking-wide text-slate-200 transition hover:bg-blue-950 hover:text-blue-400"
+            className="ink-card rounded-xl border border-blue-800/40 bg-blue-950/20 px-4 py-3 text-sm font-black uppercase tracking-wide text-slate-200 transition active:scale-[0.98]"
           >
             {link.label}
           </a>
@@ -251,7 +251,7 @@ useEffect(() => {
         <a
           href="#contact"
           onClick={() => setMobileMenuOpen(false)}
-          className="mt-2 rounded-xl bg-blue-600 px-4 py-4 text-center text-sm font-black text-white shadow-lg transition duration-300 hover:bg-blue-500"
+          className="mt-2 rounded-xl bg-blue-600 px-4 py-4 text-center text-sm font-black text-white shadow-lg transition duration-300 animate-pulse"
         >
           Schedule Free Consultation
         </a>
