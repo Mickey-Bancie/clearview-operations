@@ -236,13 +236,13 @@ useEffect(() => {
       transition={{ duration: 0.2 }}
       className="w-full overflow-x-hidden border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-2">
+      <div className="mx-auto flex max-w-7xl flex-col items-start gap-4">
         {navLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="ink-card rounded-xl border border-blue-800/40 bg-blue-950/20 px-4 py-3 text-sm font-black uppercase tracking-wide text-slate-200 transition active:scale-[0.98]"
+            className="ink-card inline-flex w-fit rounded-xl border border-blue-800/40 bg-blue-950/20 px-8 py-4 text-sm font-black uppercase tracking-wide text-slate-200 transition active:scale-[0.98]"
           >
             {link.label}
           </a>
