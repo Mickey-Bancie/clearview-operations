@@ -6,8 +6,8 @@ export default function TestimonialPage() {
     const [rating, setRating] = useState(0);
   return (
     <main className="min-h-screen bg-[#06131f] px-4 py-8 text-white md:px-6 md:py-24">
-      <section className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-5 md:p-8 shadow-2xl backdrop-blur">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-sky-300">
+      <section className="mx-auto max-w-2xl rounded-3xl border border-white/5 bg-white/5 p-5 md:p-8 shadow-2xl backdrop-blur">
+        <p className=" whitespace-nowrap mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-sky-300">
           Clearview Operations
         </p>
 
@@ -39,7 +39,7 @@ export default function TestimonialPage() {
             autoFocus
               type="text"
               required
-              className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+              className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
             />
           </div>
 
@@ -52,7 +52,7 @@ export default function TestimonialPage() {
               <input
                 type="text"
                 required
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+                className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
               />
             </div>
 
@@ -64,7 +64,7 @@ export default function TestimonialPage() {
                 type="text"
                 maxLength={1}
                 required
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+                className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function TestimonialPage() {
             </label>
             <input
               type="text"
-              className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+              className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
             />
           </div>
 
@@ -85,7 +85,7 @@ export default function TestimonialPage() {
             </label>
             <input
               type="email"
-              className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+              className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
             />
           </div>
           {/* Overall Experience */}
@@ -96,7 +96,7 @@ export default function TestimonialPage() {
   <div>
     
     <label className="mb-3 block text-sm font-medium">
-      How valuable was the report? *
+      How valuable was the report? 
     </label>
 
     <div className="flex gap-2">
@@ -192,11 +192,6 @@ export default function TestimonialPage() {
     Share Your Testimonial
   </h2>
 
-  <p className="mb-6 max-w-2xl text-white/60">
-    Your testimonial helps us continue improving while allowing future
-    clients to better understand the value of our customer experience and
-    operational consulting services.
-  </p>
 
   <div>
     <label
@@ -396,7 +391,7 @@ export default function TestimonialPage() {
   </div>
 
 <p className="mt-10 text-center text-lg font-medium text-white/80 italic">
-  "Your feedback today helps us deliver even greater value to future businesses."
+  Your feedback today helps us deliver even greater value to future businesses.
 </p>
 
 <div className="sticky bottom-0 -mx-5 mt-8 border-t border-white/10 bg-[#0b1a27]/95 px-5 py-4 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:px-0 md:py-0">
