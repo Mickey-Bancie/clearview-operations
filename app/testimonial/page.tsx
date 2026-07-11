@@ -4,6 +4,11 @@ import { useState } from "react";
 
 export default function TestimonialPage() {
     const [rating, setRating] = useState(0);
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  window.location.href = "/feedback-thank-you";
+};
   return (
     <main className="min-h-screen bg-[#06131f] px-4 py-8 text-white md:px-6 md:py-24">
       <section className="mx-auto max-w-2xl rounded-3xl border border-white/5 bg-white/5 p-5 md:p-8 shadow-2xl backdrop-blur">
@@ -30,7 +35,7 @@ export default function TestimonialPage() {
           helps future clients understand the value of our work.
         </p>
 
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="mb-2 block text-sm font-medium">
               Business or Organization Name *
