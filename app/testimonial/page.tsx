@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function TestimonialPage() {
     const [rating, setRating] = useState(0);
   return (
-    <main className="min-h-screen bg-[#06131f] px-6 py-24 text-white">
-      <section className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur">
+    <main className="min-h-screen bg-[#06131f] px-4 py-8 text-white md:px-6 md:py-24">
+      <section className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-white/5 p-5 md:p-8 shadow-2xl backdrop-blur">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-sky-300">
           Clearview Operations
         </p>
@@ -15,11 +15,11 @@ export default function TestimonialPage() {
         ⭐⭐⭐⭐⭐
        </p>
 
-       <h2 className="mb-1 text-3xl font-semibold text-sky-300">
+       <h2 className="mb-1 text-2xl font-semibold text-sky-300 md:text-3xl">
         We Appreciate Your Feedback
        </h2>
 
-        <h1 className="mb-8 text-5xl font-bold tracking-tight">  
+        <h1 className="mb-8 text-4xl font-bold tracking-tight md:mb-10 md:text-5xl">  
           Share Your Experience
         </h1>
 
@@ -89,8 +89,8 @@ export default function TestimonialPage() {
             />
           </div>
           {/* Overall Experience */}
-        <div className="border-t border-white/10 pt-10">
-  <h2 className="mb-6 text-2xl font-semibold text-white">
+        <div className="border-t border-white/10 pt-8 md:pt-10">
+  <h2 className="mb-6 text-xl font-semibold text-white md:text-2xl">
     Overall Experience
   </h2>
   <div>
@@ -106,7 +106,7 @@ export default function TestimonialPage() {
           type="button"
           onClick={() => setRating(star)}
           aria-label={`Rate ${star} out of 5 stars`}
-          className={`text-4xl transition duration-200 hover:scale-110 ${
+          className={`text-3xl transition duration-200 hover:scale-110 md:text-4xl ${
             star <= rating ? "text-yellow-400" : "text-white/25"
           }`}
         >
@@ -159,8 +159,8 @@ export default function TestimonialPage() {
 
 {/* Report Feedback */}
 
-<div className="border-t border-white/10 pt-10">
-  <h2 className="mb-6 text-2xl font-semibold text-white">
+<div className="border-t border-white/10 pt-8 md:pt-10">
+  <h2 className="mb-6 text-xl font-semibold text-white md:text-2xl">
     Your Feedback
   </h2>
   </div>
@@ -178,7 +178,7 @@ export default function TestimonialPage() {
       <textarea
         id="standoutRecommendation"
         name="standoutRecommendation"
-        rows={5}
+        rows={4}
         placeholder="Tell us about any recommendation that felt especially relevant or actionable."
         className="w-full resize-y rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-sky-400"
       />
@@ -187,8 +187,8 @@ export default function TestimonialPage() {
 
 {/* Share Your Testimonial */}
 
-<div className="border-t border-white/10 pt-10">
-  <h2 className="mb-2 text-2xl font-semibold text-white">
+<div className="border-t border-white/10 pt-8 md:pt-10">
+  <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Share Your Testimonial
   </h2>
 
@@ -210,7 +210,7 @@ export default function TestimonialPage() {
       id="testimonial"
       name="testimonial"
       required
-      rows={8}
+      rows={6}
       placeholder="Example: The report was professional, balanced, and provided several actionable recommendations that our team found valuable..."
       className="w-full resize-y rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-sky-400"
     />
@@ -218,8 +218,8 @@ export default function TestimonialPage() {
 </div>
 {/* Permissions */}
 
-<div className="border-t border-white/10 pt-10">
-  <h2 className="mb-2 text-2xl font-semibold text-white">
+<div className="border-t border-white/10 pt-8 md:pt-10">
+  <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Permissions
   </h2>
 
@@ -242,7 +242,7 @@ export default function TestimonialPage() {
         name="publishTestimonial"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
-      <span className="text-white/80">
+      <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to publish my testimonial on its
         website, social media, and other marketing
         materials.
@@ -255,7 +255,7 @@ export default function TestimonialPage() {
         name="displayBusiness"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
-      <span className="text-white/80">
+      <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to display my business
         name alongside my testimonial.
       </span>
@@ -267,7 +267,7 @@ export default function TestimonialPage() {
         name="displayLogo"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
-      <span className="text-white/80">
+      <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to display my logo alongside
         my testimonial.
       </span>
@@ -278,8 +278,8 @@ export default function TestimonialPage() {
 
 {/* Future Opportunities */}
 
-<div className="border-t border-white/10 pt-10">
-  <h2 className="mb-2 text-2xl font-semibold text-white">
+<div className="border-t border-white/10 pt-8 md:pt-10">
+  <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Future Opportunities
   </h2>
 
@@ -376,9 +376,9 @@ export default function TestimonialPage() {
 
 {/* Privacy & Submit */}
 
-<div className="border-t border-white/10 pt-10">
+<div className="border-t border-white/10 pt-8 md:pt-10">
 
-  <h2 className="mb-2 text-2xl font-semibold text-white">
+  <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
   Privacy & Confidentiality
 </h2>
 
@@ -399,12 +399,14 @@ export default function TestimonialPage() {
   "Your feedback today helps us deliver even greater value to future businesses."
 </p>
 
+<div className="sticky bottom-0 -mx-5 mt-8 border-t border-white/10 bg-[#0b1a27]/95 px-5 py-4 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:px-0 md:py-0">
   <button
     type="submit"
-    className="mt-8 w-full rounded-xl bg-sky-500 px-6 py-4 text-lg font-semibold text-white transition duration-300 hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-500/30"
+    className="w-full rounded-xl bg-sky-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-500/30 md:text-lg"
   >
     Submit Feedback
   </button>
+</div>
 
 </div>
 
