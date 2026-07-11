@@ -57,14 +57,14 @@ export default function TestimonialPage() {
             </div>
 
             <div className="md:w-24">
-              <label className="mb-2 block text-center text-sm font-medium">
+              <label className="mb-2 block text-left text-sm font-medium">
                 Last Initial *
               </label>
               <input
                 type="text"
                 maxLength={1}
                 required
-                className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+                className="w-full md:w32 rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
               />
             </div>
           </div>
