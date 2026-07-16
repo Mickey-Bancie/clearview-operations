@@ -71,7 +71,7 @@ const services = [
 
 const whyItems = [
   { icon: Clock3, title: "Fast Turnaround", text: "We deliver findings quickly so you can act — not wait months for a deck you’ll never open." },
-  { icon: DollarSign, title: "SMB Pricing", text: "Enterprise-level thinking at pricing built for small business budgets and timelines." },
+  { icon: DollarSign, title: "Lean Budgets", text: "Enterprise-level thinking at pricing built for right-sized investments and timelines." },
   { icon: Activity, title: "Focused Scope", text: "Services that work together — operations, projects, customer experience, and process improvement." },
   { icon: Phone, title: "Hands-On Support", text: "You work directly with consultants invested in your success, not just your invoice." },
 ];
