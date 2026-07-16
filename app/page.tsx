@@ -71,21 +71,21 @@ const services = [
 
 const whyItems = [
   { icon: Clock3, title: "Fast Turnaround", text: "We deliver findings quickly so you can act — not wait months for a deck you’ll never open." },
-  { icon: DollarSign, title: "Lean Budgets", text: "Enterprise-level thinking at pricing built for right-sized investments and timelines." },
+  { icon: DollarSign, title: "Lean Budgets", text: "Enterprise-level thinking for right-sized budgets, investments, and timelines." },
   { icon: Activity, title: "Focused Scope", text: "Services that work together — operations, projects, customer experience, and process improvement." },
   { icon: Phone, title: "Hands-On Support", text: "You work directly with consultants invested in your success, not just your invoice." },
 ];
 
 const industries = [
-  { label: "Retail", href: "/industries/retail" },
+  { label: "Healthcare Clinics", href: "/industries/retail" },
   { label: "Restaurants & Food Service", href: "/industries/restaurants-food-service" },
-  { label: "Healthcare Clinics", href: "/industries/healthcare-clinics" },
-  { label: "Salons & Spas", href: "/industries/salons-spas" },
-  { label: "Hospitality", href: "/industries/hospitality" },
-  { label: "Auto Dealerships", href: "/industries/auto-dealerships" },
-  { label: "Financial Services", href: "/industries/financial-services" },
-  { label: "Professional Services", href: "/industries/professional-services" },
-  { label: "Gyms & Fitness", href: "/industries/gyms-fitness" },
+  { label: "Hospitality", href: "/industries/healthcare-clinics" },
+  { label: "Retail", href: "/industries/salons-spas" },
+  { label: "Auto Dealerships", href: "/industries/hospitality" },
+  { label: "Financial Services", href: "/industries/auto-dealerships" },
+  { label: "Professional Services", href: "/industries/financial-services" },
+  { label: "Salons & Spas", href: "/industries/professional-services" },
+  { label: "Gyms & Fitness", href: "/industries/gyms-fitness" }, 
 ];
 
 const process = [
@@ -464,7 +464,7 @@ customer experiences, workflows, and service clarity.
           <SectionLabel>Who We Serve</SectionLabel>
           <h2 className="font-serif text-4xl font-black leading-tight text-slate-700">We optimize the operations behind your customer experience.</h2>
           <p className="mt-6 max-w-lg text-lg leading-8 text-slate-500">
-            We work with businesses across industries — any organization with a customer-facing component and a desire to operate at a higher level.
+            We partner with customer-focused organizations across industries to improve operations, strengthen customer experiences, and support sustainable growth.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
   {industries.map((industry, index) => (
