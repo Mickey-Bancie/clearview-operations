@@ -462,9 +462,9 @@ customer experiences, workflows, and service clarity.
       <section id="serve" className="mx-auto grid max-w-7xl gap-16 px-6 py-20 md:grid-cols-2">
         <div>
           <SectionLabel>Who We Serve</SectionLabel>
-          <h2 className="font-serif text-4xl font-black leading-tight text-slate-700">If Customers Walk Through Your Door, We Can Help</h2>
+          <h2 className="font-serif text-4xl font-black leading-tight text-slate-700">We optimize the operations behind your customer experience.</h2>
           <p className="mt-6 max-w-lg text-lg leading-8 text-slate-500">
-            We work with small businesses across industries — any organization with a customer-facing component and a desire to operate at a higher level.
+            We work with businesses across industries — any organization with a customer-facing component and a desire to operate at a higher level.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
   {industries.map((industry, index) => (
