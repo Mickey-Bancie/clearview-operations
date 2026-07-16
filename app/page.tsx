@@ -539,30 +539,52 @@ customer experiences, workflows, and service clarity.
                   <div className="flex h-14 w-14 items-center justify-center rounded-sm border border-blue-700 text-blue-400"><Icon className="h-6 w-6" /></div>
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.25em] text-slate-500">{label}</p>
-                    <p className="font-black text-white">
+ <div className="font-black text-white">
   {label === "Phone" ? (
-    <a
-      href="tel:+1 (501) 243-6171"
-      className="hover:text-blue-400 transition-colors"
-    >
-      {value}
-    </a>
+    <>
+      <a
+        href="tel:+15012436171"
+        className="transition-colors hover:text-blue-400"
+      >
+        {value}
+      </a>
+
+      <div className="mt-1 text-xs font-normal text-slate-200">
+        <a
+          href="sms:+15012436171"
+          className="transition-colors hover:text-blue-400"
+        >
+          Call
+        </a>
+
+        {" • "}
+
+        <a
+          href="tel:+15012436171"
+          className="transition-colors hover:text-blue-400"
+        >
+          Text
+        </a>
+      </div>
+    </>
   ) : label === "Email" ? (
     <a
       href="mailto:info@clearviewops.tech"
-      className="hover:text-blue-400 transition-colors"
+      className="transition-colors hover:text-blue-400"
     >
       {value}
     </a>
   ) : (
     value
   )}
-</p>
-                  </div>
+</div>
                 </div>
-              ))}
-            </div>
-          </div>
+            
+</div>
+))}
+</div>
+
+</div>
 
           <form
   action="https://formspree.io/f/xqejrqol"
