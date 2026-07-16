@@ -549,7 +549,7 @@ customer experiences, workflows, and service clarity.
         {value}
       </a>
 
-      <div className="mt-1 text-xs font-normal text-slate-200">
+      <div className="mt-2 text-lg font-medium text-slate-200">
         <a
           href="sms:+15012436171"
           className="transition-colors hover:text-blue-400"
@@ -557,7 +557,7 @@ customer experiences, workflows, and service clarity.
           Call
         </a>
 
-        {" • "}
+        {" / "}
 
         <a
           href="tel:+15012436171"
