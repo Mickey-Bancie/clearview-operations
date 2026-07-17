@@ -19,17 +19,7 @@ export default function ThankYouPage() {
         </h2>
 
         <div className="space-y-5 text-white/70">
-          <p>
-            We sincerely appreciate you taking the time to share your experience
-            with Clearview Operations.
-          </p>
-
-          <p>
-            Your feedback helps us continue improving our customer experience
-            and operational consulting services while helping future businesses
-            better understand the value of our work.
-          </p>
-
+        
           <p>
             Any testimonial or business information you submitted will remain
             private unless you provided explicit authorization for publication.
