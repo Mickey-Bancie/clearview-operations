@@ -2,10 +2,46 @@
 
 import { useState } from "react";
 
+import { supabase } from "@/lib/supabase";
+
 export default function TestimonialPage() {
-    const [rating, setRating] = useState(0);
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [rating, setRating] = useState(0);
+
+const handleSubmit = async (
+  event: React.FormEvent<HTMLFormElement>
+) => {
   event.preventDefault();
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  const { error } = await supabase.from("testimonials").insert({
+    business_name: formData.get("businessName"),
+    first_name: formData.get("firstName"),
+    last_initial: formData.get("lastInitial"),
+    job_title: formData.get("jobTitle") || null,
+    email: formData.get("email") || null,
+
+    rating,
+    feedback: formData.get("standoutRecommendation"),
+    testimonial: formData.get("testimonial"),
+
+    publish_permission:
+      formData.get("publishPermission") === "on",
+    business_name_permission:
+      formData.get("businessNamePermission") === "on",
+    logo_permission:
+      formData.get("logoPermission") === "on",
+
+    future_consulting: formData.get("futureConsulting"),
+    follow_up_permission: formData.get("followUpPermission"),
+  });
+
+  if (error) {
+    console.error("Testimonial submission failed:", error);
+    alert("Something went wrong. Please try again.");
+    return;
+  }
 
   window.location.href = "/feedback-thank-you";
 };
@@ -43,6 +79,7 @@ export default function TestimonialPage() {
             <input
             autoFocus
               type="text"
+              name="businessName"
               required
               className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
             />
@@ -56,6 +93,7 @@ export default function TestimonialPage() {
               </label>
               <input
                 type="text"
+                name="firstName"
                 required
                 className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
               />
@@ -67,6 +105,7 @@ export default function TestimonialPage() {
               </label>
               <input
                 type="text"
+                name="lastInitial"
                 maxLength={1}
                 required
                 className="w-full md:w32 rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
@@ -80,6 +119,7 @@ export default function TestimonialPage() {
             </label>
             <input
               type="text"
+              name="jobTitle"
               className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
             />
           </div>
@@ -239,7 +279,7 @@ export default function TestimonialPage() {
     <label className="flex items-start gap-3 cursor-pointer">
       <input
         type="checkbox"
-        name="publishTestimonial"
+        name="publishPermission"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
@@ -252,7 +292,7 @@ export default function TestimonialPage() {
     <label className="flex items-start gap-3 cursor-pointer">
       <input
         type="checkbox"
-        name="displayBusiness"
+        name="businessnamePermission"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
@@ -264,7 +304,7 @@ export default function TestimonialPage() {
     <label className="flex items-start gap-3 cursor-pointer">
       <input
         type="checkbox"
-        name="displayLogo"
+        name="logoPermission"
         className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
