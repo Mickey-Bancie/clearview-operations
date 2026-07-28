@@ -6,11 +6,22 @@ import { supabase } from "@/lib/supabase";
 
 export default function TestimonialPage() {
   const [rating, setRating] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
 const handleSubmit = async (
   event: React.FormEvent<HTMLFormElement>
 ) => {
   event.preventDefault();
+
+  setSubmitError("");
+
+if (rating === 0) {
+  setSubmitError("Please select a rating before submitting.");
+  return;
+}
+
+setIsSubmitting(true);
 
   const form = event.currentTarget;
   const formData = new FormData(form);
@@ -38,10 +49,13 @@ const handleSubmit = async (
   });
 
   if (error) {
-    console.error("Testimonial submission failed:", error);
-    alert("Something went wrong. Please try again.");
-    return;
-  }
+  console.error("Testimonial submission failed:", error);
+  setSubmitError(
+    "We could not submit your feedback. Please check your information and try again."
+  );
+  setIsSubmitting(false);
+  return;
+}
 
   window.location.href = "/feedback-thank-you";
 };
@@ -440,11 +454,21 @@ const handleSubmit = async (
 </p>
 
 <div className="sticky bottom-0 -mx-5 mt-8 border-t border-white/10 bg-[#0b1a27]/95 px-5 py-4 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:px-0 md:py-0">
+  {submitError && (
+    <div
+      role="alert"
+      className="mb-5 rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-sm text-red-200"
+    >
+      {submitError}
+    </div>
+  )}
+
   <button
     type="submit"
-    className="w-full rounded-xl bg-sky-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 hover:shadow-lg hover:shadow-sky-500/30 md:text-lg"
+    disabled={isSubmitting}
+    className="w-full rounded-xl bg-sky-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
   >
-    Submit Feedback
+    {isSubmitting ? "Submitting Feedback..." : "Submit Feedback"}
   </button>
 </div>
 
