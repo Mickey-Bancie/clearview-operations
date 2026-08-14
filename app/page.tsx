@@ -155,6 +155,12 @@ useEffect(() => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
+    if (mobileMenuOpen) {
+  setShowNavbar(true);
+  setLastScrollY(currentScrollY);
+  return;
+}
+
     if (currentScrollY < 10) {
       setShowNavbar(true);
     } else if (currentScrollY < lastScrollY) {
@@ -171,7 +177,7 @@ useEffect(() => {
   return () => {
     window.removeEventListener("scroll", handleScroll);
   };
-}, [lastScrollY]);
+}, [lastScrollY, mobileMenuOpen]);
 
   const navLinks = [
     { label: "Home", href: "#home" },
@@ -236,13 +242,13 @@ useEffect(() => {
       transition={{ duration: 0.2 }}
       className="w-full overflow-x-hidden border-t border-blue-800/50 bg-[#071a35] px-4 pb-5 pt-3 lg:hidden"
     >
-      <div className="mx-auto flex max-w-7xl flex-col items-start gap-4">
+      <div className="mx-auto flex max-w-7xl flex-col items-start gap-2">
         {navLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="ink-card inline-flex w-fit rounded-xl border border-blue-800/40 bg-blue-950/20 px-8 py-4 text-sm font-black uppercase tracking-wide text-slate-200 transition active:scale-[0.98]"
+            className="nav-ink-tab py-2 text-sm font-black uppercase tracking-wide text-slate-200 transition hover:text-blue-400 hover:drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]"
           >
             {link.label}
           </a>
