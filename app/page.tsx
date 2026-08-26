@@ -3,6 +3,7 @@
 import NextLink from "next/link";
 
 import React, { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -22,6 +23,8 @@ import {
   Menu,
   X,
   Link,
+  ChevronLeft,
+ ChevronRight,
 } from "lucide-react";
 
 const logoSrc = "/logo.png";
@@ -150,6 +153,9 @@ export default function ClearviewOperationsHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
 const [lastScrollY, setLastScrollY] = useState(0);
+const [liveTestimonials, setLiveTestimonials] = useState<any[]>([]);
+const testimonialScrollRef = React.useRef<HTMLDivElement>(null);
+const allTestimonials = [...testimonials, ...liveTestimonials];
 
 useEffect(() => {
   const handleScroll = () => {
@@ -178,6 +184,36 @@ useEffect(() => {
     window.removeEventListener("scroll", handleScroll);
   };
 }, [lastScrollY, mobileMenuOpen]);
+
+useEffect(() => {
+  const loadTestimonials = async () => {
+    const { data, error } = await supabase
+      .from("testimonials")
+      .select("*")
+      .eq("status", "approved")
+      .eq("publish_permission", true)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.log("Error loading public testimonials:", error);
+      return;
+    }
+
+    const formatted =
+      data?.map((item) => ({
+        initials: `${item.first_name?.[0] ?? ""}${item.last_initial ?? ""}`,
+        name: `${item.first_name} ${item.last_initial}.`,
+        role: item.business_name_permission
+          ? `${item.job_title ?? ""}${item.job_title ? ", " : ""}${item.business_name}`
+          : item.job_title || "Client",
+        quote: item.testimonial,
+      })) ?? [];
+
+    setLiveTestimonials(formatted);
+  };
+
+  loadTestimonials();
+}, []);
 
   const navLinks = [
     { label: "Home", href: "#home" },
@@ -508,21 +544,73 @@ customer experiences, workflows, and service clarity.
           <SectionLabel>Client Results</SectionLabel>
           <h2 className="font-serif text-4xl font-black text-slate-700">What Our Clients Say</h2>
           <p className="mt-5 text-lg text-slate-500">We're building our portfolio with select founding clients. Real results, real businesses, real feedback.</p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <div key={item.name} className="rounded-sm border border-slate-200 bg-white p-10 shadow-sm">
-                <div className="mb-7 flex gap-1 text-amber-300">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}</div>
-                <p className="text-lg italic leading-8 text-slate-500">“{item.quote}”</p>
-                <div className="mt-8 flex items-center gap-5 border-t border-slate-100 pt-7">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-blue-300 font-serif text-blue-500">{item.initials}</div>
-                  <div>
-                    <p className="font-black text-slate-700">{item.name}</p>
-                    <p className="text-sm leading-tight text-slate-400">{item.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="relative mt-12">
+  <button
+    type="button"
+    aria-label="Scroll testimonials left"
+    onClick={() =>
+      testimonialScrollRef.current?.scrollBy({
+        left: -380,
+        behavior: "smooth",
+      })
+    }
+    className="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-md transition hover:border-blue-400 hover:text-blue-500 md:flex"
+  >
+    <ChevronLeft className="h-6 w-6" />
+  </button>
+
+  <div
+    ref={testimonialScrollRef}
+    className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:px-16"
+  >
+    {allTestimonials.map((item) => (
+      <div
+        key={item.name}
+        className="min-w-[85%] snap-start rounded-sm border border-slate-200 bg-white p-10 shadow-sm sm:min-w-[70%] md:min-w-[calc((100%-3rem)/3)]"
+      >
+        <div className="mb-7 flex gap-1 text-amber-300">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star key={i} className="h-4 w-4 fill-current" />
+          ))}
+        </div>
+
+        <p className="text-lg italic leading-8 text-slate-500">
+          “{item.quote}”
+        </p>
+
+        <div className="mt-8 flex items-center gap-5 border-t border-slate-100 pt-7">
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-blue-300 font-serif text-blue-500">
+            {item.initials}
           </div>
+
+          <div>
+            <p className="font-black text-slate-700">
+              {item.name}
+            </p>
+
+            <p className="text-sm leading-tight text-slate-400">
+              {item.role}
+            </p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <button
+    type="button"
+    aria-label="Scroll testimonials right"
+    onClick={() =>
+      testimonialScrollRef.current?.scrollBy({
+        left: 380,
+        behavior: "smooth",
+      })
+    }
+    className="absolute right-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-md transition hover:border-blue-400 hover:text-blue-500 md:flex"
+  >
+    <ChevronRight className="h-6 w-6" />
+  </button>
+</div>
           
         </div>
       </section>

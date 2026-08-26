@@ -15,7 +15,7 @@ export default async function AdminPage() {
 
   async function updateTestimonialStatus(
   id: number,
-  status: "approved" | "rejected"
+  status: "pending" | "approved" | "rejected" | "withdrawn"
 ) {
   "use server";
 
@@ -58,6 +58,24 @@ const { count: rejectedCount } = await supabase
   .select("*", { count: "exact", head: true })
   .eq("status", "rejected");
 
+  const { data: approvedTestimonials } = await supabase
+  .from("testimonials")
+  .select("*")
+  .eq("status", "approved")
+  .order("created_at", { ascending: false });
+
+const { data: withdrawnTestimonials } = await supabase
+  .from("testimonials")
+  .select("*")
+  .eq("status", "withdrawn")
+  .order("created_at", { ascending: false });
+
+  const { data: rejectedTestimonials } = await supabase
+  .from("testimonials")
+  .select("*")
+  .eq("status", "rejected")
+  .order("created_at", { ascending: false });
+
 if (testimonialsError) {
   console.log("Testimonials query error:", {
     message: testimonialsError.message,
@@ -71,16 +89,16 @@ if (testimonialsError) {
     <main className="min-h-screen bg-[#06131f] px-4 py-10 text-white md:px-6 md:py-16">
       <section className="mx-auto max-w-6xl">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-sky-300">
-          Clearview Operations
-        </p>
+  Clearview Operations
+</p>
 
-        <h1 className="mb-3 text-4xl font-bold md:text-5xl">
-          Admin Dashboard
-        </h1>
+<h1 className="mb-3 text-4xl font-bold md:text-5xl">
+  Welcome back, Mickey.
+</h1>
 
-        <p className="text-white/60">
-          Signed in as {user.email}
-        </p>
+<p className="text-white/60">
+  Admin Dashboard
+</p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
@@ -212,7 +230,186 @@ if (testimonialsError) {
     )}
   </div>
 </div>
-        
+
+<div className="mt-12">
+  <div className="mb-6">
+    <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
+      Published
+    </p>
+
+    <h2 className="mt-2 text-2xl font-bold text-white">
+      Approved Testimonials
+    </h2>
+  </div>
+
+  <div className="space-y-5">
+    {approvedTestimonials && approvedTestimonials.length > 0 ? (
+      approvedTestimonials.map((item) => (
+        <div
+          key={item.id}
+          className="rounded-2xl border border-white/10 bg-white/5 p-6"
+        >
+          <div>
+            <h3 className="text-xl font-bold text-white">
+              {item.first_name} {item.last_initial}.
+            </h3>
+
+            <p className="mt-1 text-sm text-white/60">
+              {item.job_title && `${item.job_title} • `}
+              {item.business_name}
+            </p>
+          </div>
+
+          <div className="mt-5 rounded-xl bg-black/20 p-4">
+            <p className="leading-7 text-white/90">
+              “{item.testimonial}”
+            </p>
+          </div>
+
+          <form
+            className="mt-5"
+            action={async () => {
+              "use server";
+              await updateTestimonialStatus(item.id, "withdrawn");
+            }}
+          >
+            <button
+              type="submit"
+              className="rounded-xl border border-amber-400/40 bg-amber-500/10 px-5 py-3 text-sm font-bold text-amber-300 transition hover:bg-amber-500/20"
+            >
+              Withdraw / Unpublish
+            </button>
+          </form>
+        </div>
+      ))
+    ) : (
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
+        <p className="text-white/60">
+          No approved testimonials.
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
+<div className="mt-12">
+  <div className="mb-6">
+    <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
+      Archive
+    </p>
+
+    <h2 className="mt-2 text-2xl font-bold text-white">
+      Withdrawn Testimonials
+    </h2>
+  </div>
+
+  <div className="space-y-5">
+    {withdrawnTestimonials && withdrawnTestimonials.length > 0 ? (
+      withdrawnTestimonials.map((item) => (
+        <div
+          key={item.id}
+          className="rounded-2xl border border-white/10 bg-white/5 p-6"
+        >
+          <h3 className="text-xl font-bold text-white">
+            {item.first_name} {item.last_initial}.
+          </h3>
+
+          <p className="mt-1 text-sm text-white/60">
+            {item.job_title && `${item.job_title} • `}
+            {item.business_name}
+          </p>
+
+          <div className="mt-5 rounded-xl bg-black/20 p-4">
+            <p className="leading-7 text-white/90">
+              “{item.testimonial}”
+            </p>
+          </div>
+
+          <form
+            className="mt-5"
+            action={async () => {
+              "use server";
+              await updateTestimonialStatus(item.id, "approved");
+            }}
+          >
+            <button
+              type="submit"
+              className="rounded-xl bg-sky-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-400"
+            >
+              Republish
+            </button>
+          </form>
+        </div>
+      ))
+    ) : (
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
+        <p className="text-white/60">
+          No withdrawn testimonials.
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
+<div className="mt-12">
+  <div className="mb-6">
+    <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
+      Archive
+    </p>
+
+    <h2 className="mt-2 text-2xl font-bold text-white">
+      Rejected Testimonials
+    </h2>
+  </div>
+
+  <div className="space-y-5">
+    {rejectedTestimonials && rejectedTestimonials.length > 0 ? (
+      rejectedTestimonials.map((item) => (
+        <div
+          key={item.id}
+          className="rounded-2xl border border-white/10 bg-white/5 p-6"
+        >
+          <h3 className="text-xl font-bold text-white">
+            {item.first_name} {item.last_initial}.
+          </h3>
+
+          <p className="mt-1 text-sm text-white/60">
+            {item.job_title && `${item.job_title} • `}
+            {item.business_name}
+          </p>
+
+          <div className="mt-5 rounded-xl bg-black/20 p-4">
+            <p className="leading-7 text-white/90">
+              “{item.testimonial}”
+            </p>
+          </div>
+
+          <form
+            className="mt-5"
+            action={async () => {
+              "use server";
+              await updateTestimonialStatus(item.id, "pending");
+            }}
+          >
+            <button
+              type="submit"
+              className="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10"
+            >
+              Restore to Pending
+            </button>
+          </form>
+        </div>
+      ))
+    ) : (
+      <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
+        <p className="text-white/60">
+          No rejected testimonials.
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
       </section>
     </main>
   );
