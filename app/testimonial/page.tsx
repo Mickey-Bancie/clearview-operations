@@ -294,7 +294,7 @@ setIsSubmitting(true);
       <input
         type="checkbox"
         name="publishPermission"
-        className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
+        className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to publish my testimonial on its
@@ -307,7 +307,7 @@ setIsSubmitting(true);
       <input
         type="checkbox"
         name="businessnamePermission"
-        className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
+        className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to display my business
@@ -319,7 +319,7 @@ setIsSubmitting(true);
       <input
         type="checkbox"
         name="logoPermission"
-        className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 accent-sky-400"
+       className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">
         I authorize Clearview Ops to display my logo alongside
@@ -468,7 +468,14 @@ setIsSubmitting(true);
     disabled={isSubmitting}
     className="w-full rounded-xl bg-sky-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
   >
-    {isSubmitting ? "Submitting Feedback..." : "Submit Feedback"}
+    {isSubmitting ? (
+  <span className="flex items-center justify-center gap-2">
+    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+    Submitting Feedback...
+  </span>
+) : (
+  "Submit Feedback"
+)}
   </button>
 </div>
 

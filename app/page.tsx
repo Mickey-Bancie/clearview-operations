@@ -154,7 +154,7 @@ export default function ClearviewOperationsHomepage() {
   const [showNavbar, setShowNavbar] = useState(true);
 const [lastScrollY, setLastScrollY] = useState(0);
 const [liveTestimonials, setLiveTestimonials] = useState<any[]>([]);
-const testimonialScrollRef = React.useRef<HTMLDivElement>(null);
+const [expandedTestimonials, setExpandedTestimonials] = useState<number[]>([]); const testimonialScrollRef = React.useRef<HTMLDivElement>(null);
 const allTestimonials = [...testimonials, ...liveTestimonials];
 
 useEffect(() => {
@@ -563,10 +563,12 @@ customer experiences, workflows, and service clarity.
     ref={testimonialScrollRef}
     className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:px-16"
   >
-    {allTestimonials.map((item) => (
+    {allTestimonials.map((item, index) => (
       <div
         key={item.name}
-        className="min-w-[85%] snap-start rounded-sm border border-slate-200 bg-white p-10 shadow-sm sm:min-w-[70%] md:min-w-[calc((100%-3rem)/3)]"
+        className={`min-w-[85%] snap-start rounded-sm border border-slate-200 bg-white p-10 shadow-sm sm:min-w-[70%] md:min-w-[calc((100%-3rem)/3)] ${
+  expandedTestimonials.includes(index) ? "h-auto" : "min-h-[405px]"
+}`}
       >
         <div className="mb-7 flex gap-1 text-amber-300">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -574,11 +576,33 @@ customer experiences, workflows, and service clarity.
           ))}
         </div>
 
-        <p className="text-lg italic leading-8 text-slate-500">
-          “{item.quote}”
-        </p>
+        <div className="flex-1">
+  <p
+    className={`text-lg italic leading-8 text-slate-500 ${
+      expandedTestimonials.includes(index) ? "" : "line-clamp-5"
+    }`}
+  >
+    “{item.quote}”
+  </p>
 
-        <div className="mt-8 flex items-center gap-5 border-t border-slate-100 pt-7">
+  {item.quote.length > 100 && (
+    <button
+      type="button"
+      onClick={() =>
+        setExpandedTestimonials((current) =>
+          current.includes(index)
+            ? current.filter((i) => i !== index)
+            : [...current, index]
+        )
+      }
+      className="mt-3 text-sm font-bold text-blue-600 hover:text-blue-500"
+    >
+      {expandedTestimonials.includes(index) ? "Show less" : "Show more"}
+    </button>
+  )}
+</div>
+
+        <div className="mt-auto flex items-center gap-5 border-t border-slate-100 pt-7">
           <div className="flex h-14 w-14 items-center justify-center rounded-full border border-blue-300 font-serif text-blue-500">
             {item.initials}
           </div>

@@ -42,6 +42,15 @@ export default async function AdminPage() {
   revalidatePath("/admin");
 }
 
+async function signOut() {
+  "use server";
+
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/admin/login");
+}
+
   const { data: testimonials, error: testimonialsError } = await supabase
   .from("testimonials")
   .select("*")
@@ -93,12 +102,21 @@ if (testimonialsError) {
 </p>
 
 <h1 className="mb-3 text-4xl font-bold md:text-5xl">
-  Welcome back, Mickey.
+  Welcome back, Mickey 👋🏾
 </h1>
 
 <p className="text-white/60">
   Admin Dashboard
 </p>
+
+<form action={signOut} className="mt-5">
+  <button
+    type="submit"
+    className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+  >
+    Sign Out
+  </button>
+</form>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
