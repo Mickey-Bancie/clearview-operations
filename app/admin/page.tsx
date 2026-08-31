@@ -175,22 +175,22 @@ if (testimonialsError) {
             </p>
           </div>
         </div>
-<div className="mt-12">
-  <div className="mb-6 flex items-center justify-between">
-    <div>
-      <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
-        Testimonials
-      </p>
+<details className="mt-12">
+  <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+  <div>
+    <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
+      Testimonials
+    </p>
 
-      <h2 className="mt-2 text-2xl font-bold text-white">
-        Pending Approval
-      </h2>
-    </div>
-
-    <div className="rounded-full bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-300">
-      {testimonials?.length ?? 0} Pending
-    </div>
+    <h2 className="mt-1 text-2xl font-bold text-white">
+      Pending Approval
+    </h2>
   </div>
+
+  <span className="rounded-full bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-300">
+    {testimonials?.length ?? 0} Pending ▼
+  </span>
+</summary>
 
   <div className="space-y-5">
     {testimonials && testimonials.length > 0 ? (
@@ -282,18 +282,24 @@ if (testimonialsError) {
       </div>
     )}
   </div>
-</div>
+</details>
 
-<div className="mt-12">
-  <div className="mb-6">
+<details className="mt-12">
+  <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+  <div>
     <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
       Published
     </p>
 
-    <h2 className="mt-2 text-2xl font-bold text-white">
+    <h2 className="mt-1 text-2xl font-bold text-white">
       Approved Testimonials
     </h2>
   </div>
+
+  <span className="text-sm font-bold text-white/70">
+    {approvedTestimonials?.length ?? 0} ▼
+  </span>
+</summary>
 
   <div className="space-y-5">
     {approvedTestimonials && approvedTestimonials.length > 0 ? (
@@ -343,18 +349,24 @@ if (testimonialsError) {
       </div>
     )}
   </div>
-</div>
+</details>
 
-<div className="mt-12">
-  <div className="mb-6">
-    <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
-      Archive
-    </p>
+<details className="mt-12">
+  <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
+        Archive
+      </p>
 
-    <h2 className="mt-2 text-2xl font-bold text-white">
-      Withdrawn Testimonials
-    </h2>
-  </div>
+      <h2 className="mt-1 text-2xl font-bold text-white">
+        Withdrawn Testimonials
+      </h2>
+    </div>
+
+    <span className="text-sm font-bold text-white/70">
+      {withdrawnTestimonials?.length ?? 0} ▼
+    </span>
+  </summary>
 
   <div className="space-y-5">
     {withdrawnTestimonials && withdrawnTestimonials.length > 0 ? (
@@ -418,18 +430,24 @@ if (testimonialsError) {
       </div>
     )}
   </div>
-</div>
+</details>
 
-<div className="mt-12">
-  <div className="mb-6">
-    <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
-      Archive
-    </p>
+<details className="mt-12">
+  <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+    <div>
+      <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
+        Archive
+      </p>
 
-    <h2 className="mt-2 text-2xl font-bold text-white">
-      Rejected Testimonials
-    </h2>
-  </div>
+      <h2 className="mt-1 text-2xl font-bold text-white">
+        Rejected Testimonials
+      </h2>
+    </div>
+
+    <span className="text-sm font-bold text-white/70">
+      {rejectedTestimonials?.length ?? 0} ▼
+    </span>
+  </summary>
 
   <div className="space-y-5">
     {rejectedTestimonials && rejectedTestimonials.length > 0 ? (
@@ -493,7 +511,7 @@ if (testimonialsError) {
       </div>
     )}
   </div>
-</div>
+</details>
 
 <DeletedTestimonials
   testimonials={deletedTestimonials ?? []}
