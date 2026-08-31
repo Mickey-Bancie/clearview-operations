@@ -2,6 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
+import DeletedTestimonials from "./DeletedTestimonials";
+
 export default async function AdminPage() {
   const supabase = await createClient();
 
@@ -15,7 +17,7 @@ export default async function AdminPage() {
 
   async function updateTestimonialStatus(
   id: number,
-  status: "pending" | "approved" | "rejected" | "withdrawn"
+  status: "pending" | "approved" | "rejected" | "withdrawn" | "deleted"
 ) {
   "use server";
 
@@ -36,6 +38,58 @@ export default async function AdminPage() {
 
   if (error) {
     console.log("Error updating testimonial:", error);
+    return;
+  }
+
+  revalidatePath("/admin");
+}
+
+async function permanentlyDeleteTestimonial(id: number) {
+  "use server";
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/admin/login");
+  }
+
+  const { error } = await supabase
+    .from("testimonials")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.log("Error permanently deleting testimonial:", error);
+    return;
+  }
+
+  revalidatePath("/admin");
+}
+
+async function permanentlyDeleteTestimonial(id: number) {
+  "use server";
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/admin/login");
+  }
+
+  const { error } = await supabase
+    .from("testimonials")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.log("Error permanently deleting testimonial:", error);
     return;
   }
 
@@ -83,6 +137,12 @@ const { data: withdrawnTestimonials } = await supabase
   .from("testimonials")
   .select("*")
   .eq("status", "rejected")
+  .order("created_at", { ascending: false });
+
+  const { data: deletedTestimonials } = await supabase
+  .from("testimonials")
+  .select("*")
+  .eq("status", "deleted")
   .order("created_at", { ascending: false });
 
 if (testimonialsError) {
@@ -357,6 +417,22 @@ if (testimonialsError) {
               Republish
             </button>
           </form>
+
+<form
+  className="mt-3"
+  action={async () => {
+    "use server";
+    await updateTestimonialStatus(item.id, "deleted");
+  }}
+>
+  <button
+    type="submit"
+    className="rounded-xl border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm font-bold text-red-300 transition hover:bg-red-500/20"
+  >
+    🗑 Delete
+  </button>
+</form>
+
         </div>
       ))
     ) : (
@@ -416,6 +492,22 @@ if (testimonialsError) {
               Restore to Pending
             </button>
           </form>
+
+<form
+  className="mt-3"
+  action={async () => {
+    "use server";
+    await updateTestimonialStatus(item.id, "deleted");
+  }}
+>
+  <button
+    type="submit"
+    className="rounded-xl border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm font-bold text-red-300 transition hover:bg-red-500/20"
+  >
+    🗑 Delete
+  </button>
+</form>
+
         </div>
       ))
     ) : (
@@ -427,6 +519,18 @@ if (testimonialsError) {
     )}
   </div>
 </div>
+
+<DeletedTestimonials
+  testimonials={deletedTestimonials ?? []}
+  restoreAction={async (id: number) => {
+    "use server";
+    await updateTestimonialStatus(id, "withdrawn");
+  }}
+  deleteForeverAction={async (id: number) => {
+    "use server";
+    await permanentlyDeleteTestimonial(id);
+  }}
+/>
 
       </section>
     </main>
