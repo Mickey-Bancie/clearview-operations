@@ -70,31 +70,6 @@ async function permanentlyDeleteTestimonial(id: number) {
   revalidatePath("/admin");
 }
 
-async function permanentlyDeleteTestimonial(id: number) {
-  "use server";
-
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/admin/login");
-  }
-
-  const { error } = await supabase
-    .from("testimonials")
-    .delete()
-    .eq("id", id);
-
-  if (error) {
-    console.log("Error permanently deleting testimonial:", error);
-    return;
-  }
-
-  revalidatePath("/admin");
-}
 
 async function signOut() {
   "use server";
