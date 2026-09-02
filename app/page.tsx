@@ -80,15 +80,51 @@ const whyItems = [
 ];
 
 const industries = [
-  { label: "Healthcare Clinics", href: "/industries/retail" },
-  { label: "Restaurants & Food Service", href: "/industries/restaurants-food-service" },
-  { label: "Hospitality", href: "/industries/healthcare-clinics" },
-  { label: "Retail", href: "/industries/salons-spas" },
-  { label: "Auto Dealerships", href: "/industries/hospitality" },
-  { label: "Financial Services", href: "/industries/auto-dealerships" },
-  { label: "Professional Services", href: "/industries/financial-services" },
-  { label: "Salons & Spas", href: "/industries/professional-services" },
-  { label: "Gyms & Fitness", href: "/industries/gyms-fitness" }, 
+  {
+    label: "Healthcare Clinics",
+    href: "/industries/healthcare-clinics",
+    image: "/images/industries/healthcare.png",
+  },
+  {
+    label: "Restaurants & Food Service",
+    href: "/industries/restaurants-food-service",
+    image: "/images/industries/restaurants.png",
+  },
+  {
+    label: "Hospitality",
+    href: "/industries/hospitality",
+    image: "/images/industries/hospitality.png",
+  },
+  {
+    label: "Retail",
+    href: "/industries/retail",
+    image: "/images/industries/retail.png",
+  },
+  {
+    label: "Auto Dealerships",
+    href: "/industries/auto-dealerships",
+    image: "/images/industries/auto-dealerships.png",
+  },
+  {
+    label: "Financial Services",
+    href: "/industries/financial-services",
+    image: "/images/industries/financial-services.png",
+  },
+  {
+    label: "Professional Services",
+    href: "/industries/professional-services",
+    image: "/images/industries/professional-services.png",
+  },
+  {
+    label: "Salons & Spas",
+    href: "/industries/salons-spas",
+    image: "/images/industries/salons-spas.png",
+  },
+  {
+    label: "Gyms & Fitness",
+    href: "/industries/gyms-fitness",
+    image: "/images/industries/gyms-fitness.png",
+  },
 ];
 
 const process = [
@@ -511,16 +547,27 @@ customer experiences, workflows, and service clarity.
           <div className="mt-8 flex flex-wrap gap-3">
   {industries.map((industry, index) => (
     <div
-      key={industry.label}
-      className={`ink-card cursor-pointer rounded-full border px-5 py-2 text-sm font-bold transition-all duration-300 hover:-translate-y-1 hover:border-blue-500 hover:bg-blue-600 hover:text-white hover:shadow-[0_0_24px_rgba(37,99,235,0.45)] ${
-        index === 0
-          ? "border-blue-600 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.35)]"
-          : "border-slate-300 bg-white text-slate-800"
-      }`}
-    >
-      {industry.label}
-    </div>
-            ))}
+  key={industry.label}
+  className={`group relative overflow-hidden ink-card cursor-pointer rounded-full border px-9 py-6 text-sm font-bold ${
+    index === 0
+      ? "border-blue-600 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.35)]"
+      : "border-slate-300 bg-white text-slate-800"
+  }`}
+>
+  {industry.image && (
+  <>
+    <div
+      className="!absolute inset-0 !z-0 bg-cover bg-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      style={{ backgroundImage: `url(${industry.image})` }}
+    />
+
+    <div className="!absolute inset-0 !z-[1] bg-blue-950/50 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+  </>
+)}
+
+<span className="relative z-10">{industry.label}</span>
+</div>
+      ))}
           </div>
         </div>
         <div>
