@@ -8,6 +8,7 @@ export default function AdminLoginPage() {
 
     const [error, setError] = useState("");
 const [isLoading, setIsLoading] = useState(false);
+const [showPassword, setShowPassword] = useState(false);
 
 const supabase = createClient();
 
@@ -69,12 +70,23 @@ const supabase = createClient();
               Password
             </label>
 
-            <input
-              type="password"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
-            />
+            <div className="relative">
+  <input
+    type={showPassword ? "text" : "password"}
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-3 pr-12 outline-none"
+  />
+
+  <button
+    type="button"
+    onClick={() => setShowPassword((prev) => !prev)}
+    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 transition hover:text-white"
+    aria-label={showPassword ? "Hide password" : "Show password"}
+  >
+    {showPassword ? "🙈" : "👁️"}
+  </button>
+</div>
           </div>
 
           {error && (

@@ -39,9 +39,17 @@ export default function DeletedTestimonials({
           </h2>
         </div>
 
-        <span className="text-sm font-bold text-white/70">
-          {testimonials.length} {open ? "▲" : "▼"}
-        </span>
+        <span className="flex items-center gap-2 text-sm font-bold text-white/70">
+  {testimonials.length}
+
+  <span
+    className={`inline-block transition-transform duration-300 ${
+      open ? "rotate-180" : "rotate-0"
+    }`}
+  >
+    ▼
+  </span>
+</span>
       </button>
 
       {open && (

@@ -175,7 +175,7 @@ if (testimonialsError) {
             </p>
           </div>
         </div>
-<details className="mt-12">
+<details className="group mt-12">
   <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
   <div>
     <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
@@ -187,9 +187,13 @@ if (testimonialsError) {
     </h2>
   </div>
 
-  <span className="rounded-full bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-300">
-    {testimonials?.length ?? 0} Pending ▼
+  <span className="flex items-center gap-2 rounded-full bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-300">
+  {testimonials?.length ?? 0} Pending
+
+  <span className="inline-block transition-transform duration-300 group-open:rotate-180">
+    ▼
   </span>
+</span>
 </summary>
 
   <div className="space-y-5">
@@ -284,7 +288,7 @@ if (testimonialsError) {
   </div>
 </details>
 
-<details className="mt-12">
+<details className="group mt-12">
   <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
   <div>
     <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
@@ -296,9 +300,13 @@ if (testimonialsError) {
     </h2>
   </div>
 
-  <span className="text-sm font-bold text-white/70">
-    {approvedTestimonials?.length ?? 0} ▼
+  <span className="flex items-center gap-2 text-sm font-bold text-white/70">
+  {withdrawnTestimonials?.length ?? 0}
+
+  <span className="inline-block transition-transform duration-300 group-open:rotate-180">
+    ▼
   </span>
+</span>
 </summary>
 
   <div className="space-y-5">
@@ -351,7 +359,7 @@ if (testimonialsError) {
   </div>
 </details>
 
-<details className="mt-12">
+<details className="group mt-12">
   <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
     <div>
       <p className="text-sm font-semibold uppercase tracking-widest text-sky-400">
@@ -363,9 +371,13 @@ if (testimonialsError) {
       </h2>
     </div>
 
-    <span className="text-sm font-bold text-white/70">
-      {withdrawnTestimonials?.length ?? 0} ▼
-    </span>
+    <span className="flex items-center gap-2 text-sm font-bold text-white/70">
+  {withdrawnTestimonials?.length ?? 0}
+
+  <span className="inline-block transition-transform duration-300 group-open:rotate-180">
+    ▼
+  </span>
+</span>
   </summary>
 
   <div className="space-y-5">
@@ -432,7 +444,7 @@ if (testimonialsError) {
   </div>
 </details>
 
-<details className="mt-12">
+<details className="group mt-12">
   <summary className="mb-6 flex cursor-pointer items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
     <div>
       <p className="text-sm font-semibold uppercase tracking-widest text-red-400">
@@ -444,9 +456,13 @@ if (testimonialsError) {
       </h2>
     </div>
 
-    <span className="text-sm font-bold text-white/70">
-      {rejectedTestimonials?.length ?? 0} ▼
-    </span>
+    <span className="flex items-center gap-2 text-sm font-bold text-white/70">
+  {rejectedTestimonials?.length ?? 0}
+
+  <span className="inline-block transition-transform duration-300 group-open:rotate-180">
+    ▼
+  </span>
+</span>
   </summary>
 
   <div className="space-y-5">
