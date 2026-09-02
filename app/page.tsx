@@ -192,6 +192,7 @@ const [lastScrollY, setLastScrollY] = useState(0);
 const [liveTestimonials, setLiveTestimonials] = useState<any[]>([]);
 const [expandedTestimonials, setExpandedTestimonials] = useState<number[]>([]); const testimonialScrollRef = React.useRef<HTMLDivElement>(null);
 const allTestimonials = [...testimonials, ...liveTestimonials];
+const [selectedIndustry, setSelectedIndustry] = useState<number | null>(null);
 
 useEffect(() => {
   const handleScroll = () => {
@@ -220,6 +221,20 @@ useEffect(() => {
     window.removeEventListener("scroll", handleScroll);
   };
 }, [lastScrollY, mobileMenuOpen]);
+
+useEffect(() => {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      setSelectedIndustry(null);
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, []);
 
 useEffect(() => {
   const loadTestimonials = async () => {
@@ -548,6 +563,7 @@ customer experiences, workflows, and service clarity.
   {industries.map((industry, index) => (
     <div
   key={industry.label}
+  onClick={() => setSelectedIndustry(index)}
   className={`group relative overflow-hidden ink-card cursor-pointer rounded-full border px-9 py-6 text-sm font-bold ${
     index === 0
       ? "border-blue-600 bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.35)]"
@@ -569,6 +585,38 @@ customer experiences, workflows, and service clarity.
 </div>
       ))}
           </div>
+        {selectedIndustry !== null && (
+  <div
+    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4"
+    onClick={() => setSelectedIndustry(null)}
+  >
+    <div
+      className="relative w-full max-w-4xl overflow-hidden rounded-3xl shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <img
+        src={industries[selectedIndustry].image}
+        alt={industries[selectedIndustry].label}
+        className="h-auto w-full object-cover"
+      />
+
+      <button
+        onClick={() => setSelectedIndustry(null)}
+        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-xl text-white backdrop-blur transition hover:bg-black/80"
+        aria-label="Close image"
+      >
+        ×
+      </button>
+
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-16">
+        <h3 className="text-xl font-semibold text-white">
+          {industries[selectedIndustry].label}
+        </h3>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
         <div>
           <SectionLabel>Our Process</SectionLabel>
