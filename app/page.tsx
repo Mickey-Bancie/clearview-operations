@@ -764,7 +764,7 @@ customer experiences, workflows, and service clarity.
 
       <div className="mt-2 text-lg font-medium text-slate-200">
         <a
-          href="sms:+15012436171"
+          href="tel:+15012436171"
           className="transition-colors hover:text-blue-400"
         >
           Call
@@ -773,7 +773,7 @@ customer experiences, workflows, and service clarity.
         {" / "}
 
         <a
-          href="tel:+15012436171"
+          href="sms:+15012436171"
           className="transition-colors hover:text-blue-400"
         >
           Text
