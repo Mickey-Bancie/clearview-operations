@@ -322,6 +322,8 @@ useEffect(() => {
     </button>
   </nav>
 
+
+
   {mobileMenuOpen && (
     <motion.div
       initial={{ opacity: 0, y: -12 }}
@@ -372,7 +374,26 @@ useEffect(() => {
           <div className="h-full w-full bg-[radial-gradient(circle_at_65%_45%,rgba(96,165,250,0.32),transparent_28%),linear-gradient(90deg,#071a35_0%,rgba(7,26,53,0.72)_45%,rgba(7,26,53,0.25)_100%)]" />
         </div>
         <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+          
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <NextLink
+  href="/capabilities"
+  className="group mb-7 flex w-full flex-col items-center justify-center text-center text-[11px] font-black tracking-[0.16em] text-slate-300 transition hover:text-blue-400 sm:text-xs lg:mb-8 lg:flex-row lg:gap-3"
+>
+  <span className="uppercase text-blue-400">
+    Government & Contracting
+  </span>
+
+  <span className="hidden h-1 w-1 rounded-full bg-slate-500 lg:block" />
+
+  <span className="mt-1 normal-case tracking-normal lg:mt-0">
+    View Clearview Operations Capability Statement
+  </span>
+
+  <span className="mt-1 transition-transform group-hover:translate-x-1 lg:mt-0">
+    →
+  </span>
+</NextLink>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -961,6 +982,7 @@ customer experiences, workflows, and service clarity.
             <a href="#services">Services</a>
             <NextLink href="/about">About</NextLink>
             <a href="#results">Results</a>
+            <NextLink href="/capabilities">Capabilities</NextLink>
             <a href="#contact">Contact</a>
             
             <NextLink
@@ -972,7 +994,9 @@ customer experiences, workflows, and service clarity.
 
           </div>
         </div>
-        <div className="mx-auto mt-6 max-w-7xl text-xs text-slate-600">© 2026 Aura Global Holdings, LLC. All rights reserved.</div>
+        <div className="mx-auto mt-6 max-w-7xl text-xs text-slate-600">
+  © {new Date().getFullYear()} Aura Global Holdings, LLC. All rights reserved.
+</div>
       </footer>
     </main>
   );
