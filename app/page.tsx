@@ -376,24 +376,7 @@ useEffect(() => {
         <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 px-4 py-20 sm:px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
           
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <NextLink
-  href="/capabilities"
-  className="group mb-7 flex w-full flex-col items-center justify-center text-center text-[11px] font-black tracking-[0.16em] text-slate-300 transition hover:text-blue-400 sm:text-xs lg:mb-8 lg:flex-row lg:gap-3"
->
-  <span className="uppercase text-blue-400">
-    Government & Contracting
-  </span>
-
-  <span className="hidden h-1 w-1 rounded-full bg-slate-500 lg:block" />
-
-  <span className="mt-1 normal-case tracking-normal lg:mt-0">
-    View Clearview Operations Capability Statement
-  </span>
-
-  <span className="mt-1 transition-transform group-hover:translate-x-1 lg:mt-0">
-    →
-  </span>
-</NextLink>
+           
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -970,6 +953,34 @@ customer experiences, workflows, and service clarity.
 </form>
         </div>
       </section>
+
+      {/* Government & Contracting */}
+<section className="border-t border-blue-900/40 bg-[#061a35] px-6 py-3 text-center text-white">
+  <div className="mx-auto max-w-7xl">
+    <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-400">
+      Government & Contracting
+    </p>
+
+    <h2 className="mt-2 font-serif text-xl font-black md:text-2xl">
+      Government Agencies & Prime Contractors
+    </h2>
+
+    <p className="mx-auto mt-2 max-w-2xl text-sm leading-5 text-slate-300">
+      Explore Clearview Operations&apos; capabilities in project support,
+      operational improvement, process analysis, and technology initiatives.
+    </p>
+
+    <NextLink
+      href="/capabilities"
+      className="group mt-3 inline-flex items-center gap-2 font-bold text-blue-400 transition hover:text-blue-300"
+    >
+      View Clearview Operations Capabilities
+      <span className="transition-transform group-hover:translate-x-1">
+        →
+      </span>
+    </NextLink>
+  </div>
+</section>
 
       <footer className="bg-[#031021] px-6 py-8 text-slate-400">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
