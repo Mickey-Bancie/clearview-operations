@@ -257,7 +257,7 @@ useEffect(() => {
         role: item.business_name_permission
           ? `${item.job_title ?? ""}${item.job_title ? ", " : ""}${item.business_name}`
           : item.job_title || "Client",
-        quote: item.testimonial,
+        quote: item.edited_testimonial || item.testimonial,
       })) ?? [];
 
     setLiveTestimonials(formatted);

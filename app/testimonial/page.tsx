@@ -39,6 +39,8 @@ setIsSubmitting(true);
 
     publish_permission:
       formData.get("publishPermission") === "on",
+      edit_permission:
+  formData.get("editPermission") === "on",
     business_name_permission:
       formData.get("businessNamePermission") === "on",
     logo_permission:
@@ -303,10 +305,22 @@ setIsSubmitting(true);
       </span>
     </label>
 
+<label className="flex items-start gap-3 cursor-pointer">
+  <input
+    type="checkbox"
+    name="editPermission"
+    className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
+  />
+  <span className="text-sm leading-6 text-white/80 md:text-base">
+    I authorize Clearview Ops to make minor edits to my testimonial
+    for grammar, spelling, and clarity without changing its meaning.
+  </span>
+</label>
+
     <label className="flex items-start gap-3 cursor-pointer">
       <input
         type="checkbox"
-        name="businessnamePermission"
+        name="businessNamePermission"
         className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
       />
       <span className="text-sm leading-6 text-white/80 md:text-base">

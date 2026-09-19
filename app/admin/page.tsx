@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 import DeletedTestimonials from "./DeletedTestimonials";
+import Link from "next/link";
 
 export default async function AdminPage() {
   const supabase = await createClient();
@@ -247,20 +248,26 @@ if (testimonialsError) {
             </span>
           </div>
 <div className="mt-6 flex gap-3">
-  <form
-    action={async () => {
-      "use server";
-      await updateTestimonialStatus(item.id, "approved");
-    }}
+  <Link
+  href={`/admin/testimonials/${item.id}`}
+  className="rounded-xl bg-sky-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-400"
+>
+  View
+</Link>
+<form
+  action={async () => {
+    "use server";
+    await updateTestimonialStatus(item.id, "approved");
+  }}
+>
+  <button
+    type="submit"
+    className="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-400"
   >
-    <button
-      type="submit"
-      className="rounded-xl bg-emerald-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-400"
-    >
-      Approve
-    </button>
-  </form>
-
+    Publish
+  </button>
+</form>
+    
   <form
     action={async () => {
       "use server";
