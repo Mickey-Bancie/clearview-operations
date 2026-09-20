@@ -42,7 +42,7 @@ export default function ThankYouPage() {
         </div>
 <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-5">
   <p className="text-center text-sm text-white/60">
-    For questions or additional assistance, please email:
+    Have a question or need anything else?
   </p>
 
   <p className="mt-2 text-center">

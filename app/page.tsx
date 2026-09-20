@@ -253,7 +253,11 @@ useEffect(() => {
     const formatted =
       data?.map((item) => ({
         initials: `${item.first_name?.[0] ?? ""}${item.last_initial ?? ""}`,
-        name: `${item.first_name} ${item.last_initial}.`,
+        name: `${item.first_name} ${
+  item.last_initial?.length === 1
+    ? `${item.last_initial}.`
+    : item.last_initial
+}`,
         role: item.business_name_permission
           ? `${item.job_title ?? ""}${item.job_title ? ", " : ""}${item.business_name}`
           : item.job_title || "Client",

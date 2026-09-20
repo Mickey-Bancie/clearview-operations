@@ -207,7 +207,10 @@ if (testimonialsError) {
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
               <h3 className="text-xl font-bold text-white">
-                {item.first_name} {item.last_initial}.
+                {item.first_name}{" "}
+{item.last_initial?.length === 1
+  ? `${item.last_initial}.`
+  : item.last_initial}
               </h3>
 
               <p className="mt-1 text-sm text-white/60">
@@ -325,7 +328,10 @@ if (testimonialsError) {
         >
           <div>
             <h3 className="text-xl font-bold text-white">
-              {item.first_name} {item.last_initial}.
+              {item.first_name}{" "}
+{item.last_initial?.length === 1
+  ? `${item.last_initial}.`
+  : item.last_initial}
             </h3>
 
             <p className="mt-1 text-sm text-white/60">
@@ -395,7 +401,10 @@ if (testimonialsError) {
           className="rounded-2xl border border-white/10 bg-white/5 p-6"
         >
           <h3 className="text-xl font-bold text-white">
-            {item.first_name} {item.last_initial}.
+            {item.first_name}{" "}
+{item.last_initial?.length === 1
+  ? `${item.last_initial}.`
+  : item.last_initial}
           </h3>
 
           <p className="mt-1 text-sm text-white/60">
@@ -480,7 +489,10 @@ if (testimonialsError) {
           className="rounded-2xl border border-white/10 bg-white/5 p-6"
         >
           <h3 className="text-xl font-bold text-white">
-            {item.first_name} {item.last_initial}.
+            {item.first_name}{" "}
+{item.last_initial?.length === 1
+  ? `${item.last_initial}.`
+  : item.last_initial}
           </h3>
 
           <p className="mt-1 text-sm text-white/60">

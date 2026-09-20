@@ -115,16 +115,15 @@ setIsSubmitting(true);
               />
             </div>
 
-            <div className="md:w-24">
+            <div className="flex-1">
               <label className="mb-2 block text-left text-sm font-medium">
-                Last Initial *
+                Last Name or Initial *
               </label>
               <input
                 type="text"
                 name="lastInitial"
-                maxLength={1}
                 required
-                className="w-full md:w32 rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
+                className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
               />
             </div>
           </div>
@@ -312,8 +311,8 @@ setIsSubmitting(true);
     className="mt-1 h-5 w-5 shrink-0 rounded border-white/20 bg-white/10 accent-sky-400"
   />
   <span className="text-sm leading-6 text-white/80 md:text-base">
-    I authorize Clearview Ops to make minor edits to my testimonial
-    for grammar, spelling, and clarity without changing its meaning.
+    I authorize Clearview Ops to make minor edits to my testimonial for grammar, 
+    spelling, and clarity, if needed, without changing its meaning.
   </span>
 </label>
 

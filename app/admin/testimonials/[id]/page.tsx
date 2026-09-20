@@ -145,7 +145,10 @@ export default async function TestimonialReviewPage({
             </p>
 
             <h1 className="text-3xl font-black">
-              {testimonial.first_name} {testimonial.last_initial}.
+              {testimonial.first_name}{" "}
+{testimonial.last_initial?.length === 1
+  ? `${testimonial.last_initial}.`
+  : testimonial.last_initial}
             </h1>
 
             <p className="text-slate-400">
