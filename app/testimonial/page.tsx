@@ -59,6 +59,26 @@ setIsSubmitting(true);
   return;
 }
 
+try {
+  await fetch("/api/testimonial-notification", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastInitial"),
+      businessName: formData.get("businessName"),
+      
+    }),
+  });
+} catch (notificationError) {
+  console.error(
+    "Testimonial saved, but notification email failed:",
+    notificationError
+  );
+}
+
   window.location.href = "/feedback-thank-you";
 };
   return (
