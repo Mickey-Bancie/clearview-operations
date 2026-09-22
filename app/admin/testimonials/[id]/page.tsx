@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 
 import { createClient } from "@/lib/supabase/server";
 
+import EditableTestimonial from "./EditableTestimonial";
+
 export default async function TestimonialReviewPage({
   params,
 }: {
@@ -204,38 +206,11 @@ export default async function TestimonialReviewPage({
 )}
 
           </div>
-
-          <form action={saveEditedTestimonial} className="mt-8">
-            <label
-              htmlFor="editedTestimonial"
-              className="text-xs font-black uppercase tracking-[0.16em] text-slate-500"
-            >
-              Published Version
-            </label>
-
-            <textarea
-              id="editedTestimonial"
-              name="editedTestimonial"
-              rows={7}
-              defaultValue={
-                testimonial.edited_testimonial ?? testimonial.testimonial
-              }
-              disabled={!testimonial.edit_permission}
-              className="mt-3 w-full rounded-2xl border border-white/10 bg-slate-900 p-4 leading-7 text-white outline-none transition focus:border-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
-            />
-
-            {testimonial.edit_permission && (
-  <div className="mt-4 flex justify-end">
-    <button
-      type="submit"
-      className="rounded-xl bg-sky-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-sky-400"
-    >
-      Save
-    </button>
-  </div>
-)}
-          </form>
-
+<EditableTestimonial
+  initialValue={testimonial.edited_testimonial ?? testimonial.testimonial}
+  editPermission={testimonial.edit_permission}
+  saveAction={saveEditedTestimonial}
+/>
           <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-bold text-slate-300">
