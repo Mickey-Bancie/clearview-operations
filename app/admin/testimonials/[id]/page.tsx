@@ -171,6 +171,36 @@ export default async function TestimonialReviewPage({
             </div>
           </div>
 
+{(testimonial.feedback || testimonial.improvement_feedback) && (
+  <div className="mt-6 space-y-4">
+    <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-500">
+      Feedback for Clearview Operations
+    </p>
+
+    {testimonial.feedback && (
+      <div className="rounded-2xl border border-white/10 bg-slate-900 p-5">
+        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">
+          What did you find most valuable, and did any recommendation stand out?
+        </p>
+        <p className="leading-7 text-slate-200">
+          {testimonial.feedback}
+        </p>
+      </div>
+    )}
+
+    {testimonial.improvement_feedback && (
+      <div className="rounded-2xl border border-white/10 bg-slate-900 p-5">
+        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">
+          Is there anything Clearview Operations could have done better?
+        </p>
+        <p className="leading-7 text-slate-200">
+          {testimonial.improvement_feedback}
+        </p>
+      </div>
+    )}
+  </div>
+)}
+
           <div className="mt-6 rounded-2xl border border-white/10 p-4">
             <p
               className={`font-bold ${

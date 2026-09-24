@@ -34,8 +34,9 @@ setIsSubmitting(true);
     email: formData.get("email") || null,
 
     rating,
-    feedback: formData.get("standoutRecommendation"),
-    testimonial: formData.get("testimonial"),
+feedback: formData.get("standoutRecommendation"),
+improvement_feedback: formData.get("improvementFeedback") || null,
+testimonial: formData.get("testimonial"),
 
     publish_permission:
       formData.get("publishPermission") === "on",
@@ -241,7 +242,7 @@ try {
 
 <div className="border-t border-white/10 pt-8 md:pt-10">
   <h2 className="mb-6 text-xl font-semibold text-white md:text-2xl">
-    Your Feedback
+    Your Feedback for Clearview Operations
   </h2>
   </div>
 
@@ -252,7 +253,8 @@ try {
         htmlFor="standoutRecommendation"
         className="mb-2 block text-sm font-medium"
       >
-        What did you find most valuable, and did any recommendation stand out?
+        What did you find most valuable, and did any recommendation stand out?{" "}
+        <span className="text-white/60">(Optional)</span>
       </label>
 
       <textarea
@@ -264,10 +266,27 @@ try {
       />
     </div>
 
+<div className="mt-6">
+  <label
+    htmlFor="improvementFeedback"
+    className="mb-2 block text-sm font-medium"
+  >
+    Is there anything Clearview Operations could have done better?{" "}
+    <span className="text-white/60">(Optional)</span>
+  </label>
+
+  <textarea
+    id="improvementFeedback"
+    name="improvementFeedback"
+    rows={4}
+    placeholder="We welcome honest feedback on the report, communication, or overall experience."
+    className="w-full resize-y rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/40"
+  />
+</div>
 
 {/* Share Your Testimonial */}
 
-<div className="border-t border-white/10 pt-8 md:pt-10">
+<div className="mt-8 rounded-2xl border border-sky-400/20 bg-sky-400/5 p-6 md:p-8">
   <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Share Your Testimonial
   </h2>
@@ -287,7 +306,7 @@ try {
       required
       rows={6}
       placeholder="Example: The report was professional, balanced, and provided several actionable recommendations that our team found valuable..."
-      className="w-full resize-y rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-sky-400"
+      className="w-full resize-y rounded-xl border border-sky-400/30 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-sky-400/60"
     />
   </div>
 </div>
