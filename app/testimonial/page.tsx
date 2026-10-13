@@ -34,8 +34,9 @@ setIsSubmitting(true);
     email: formData.get("email") || null,
 
     rating,
-feedback: formData.get("standoutRecommendation"),
-improvement_feedback: formData.get("improvementFeedback") || null,
+// Feedback moved to a future dedicated feedback form
+feedback: formData.get("standoutRecommendation") || "",
+// improvement_feedback: formData.get("improvementFeedback") || null,
 testimonial: formData.get("testimonial"),
 
     publish_permission:
@@ -52,7 +53,12 @@ testimonial: formData.get("testimonial"),
   });
 
   if (error) {
-  console.error("Testimonial submission failed:", error);
+  console.error("Testimonial submission failed:", {
+  message: error.message,
+  code: error.code,
+  details: error.details,
+  hint: error.hint,
+});
   setSubmitError(
     "We could not submit your feedback. Please check your information and try again."
   );
@@ -97,30 +103,42 @@ try {
         We Appreciate Your Feedback
        </h2>
 
-        <h1 className="mb-8 text-4xl font-bold tracking-tight md:mb-10 md:text-5xl">  
+        <h1 className="mb-4 text-4xl font-bold tracking-tight md:mb-4 md:text-5xl">  
           Share Your Experience
         </h1>
 
-        <p className="mb-8 text-white/75">
-          Thank you for taking the time to review your complimentary Customer
-          Experience & Operations Observation Report. If you found the report
-          valuable, your feedback helps us continue improving our services and
-          helps future clients understand the value of our work.
+        <p className="mb-6 text-white/75">
+          Thank you for reviewing your complimentary Clearview Operations report! 
+          Your experience helps us improve and shows other businesses the value of our work.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="mb-2 block text-sm font-medium">
-              Business or Organization Name *
-            </label>
-            <input
-            autoFocus
-              type="text"
-              name="businessName"
-              required
-              className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
-            />
-          </div>
+          <div className="flex flex-col gap-6 md:flex-row">
+  <div className="flex-1">
+    <label className="mb-2 block text-sm font-medium">
+      Business or Organization Name *
+    </label>
+    <input
+      autoFocus
+      type="text"
+      name="businessName"
+      required
+      className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none"
+    />
+  </div>
+
+  <div className="flex-1">
+    <label className="mb-2 block text-sm font-medium">
+      Job Title / Position *
+    </label>
+    <input
+      type="text"
+      name="jobTitle"
+      required
+      className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none"
+    />
+  </div>
+</div>
 
 {/* Contact Information */}
           <div className="flex flex-col gap-6 md:flex-row">
@@ -149,16 +167,7 @@ try {
             </div>
           </div>
 
-          <div>
-            <label className="mb-2 block text-sm font-medium">
-              Job Title / Position
-            </label>
-            <input
-              type="text"
-              name="jobTitle"
-              className="w-full rounded-xl border border-white/5 bg-white/10 px-4 py-3 outline-none focus:border-sky-400"
-            />
-          </div>
+          
 
           <div>
             <label className="mb-2 block text-sm font-medium">
@@ -170,12 +179,15 @@ try {
             />
           </div>
           {/* Overall Experience */}
-        <div className="border-t border-white/10 pt-8 md:pt-10">
-  <h2 className="mb-6 text-xl font-semibold text-white md:text-2xl">
+        <div className="border-t border-white/10 pt-4 md:pt-5">
+  <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Overall Experience
   </h2>
   <div>
     
+    <p className="mb-2 text-sm text-white/50">
+  Select a rating from 1 to 5 stars.
+</p>
     <label className="mb-3 block text-sm font-medium">
       How valuable was the report? 
     </label>
@@ -196,43 +208,40 @@ try {
       ))}
     </div>
 
-   <p className="mt-3 text-sm font-medium">
-  {rating === 0 && (
-    <span className="text-white/50">
-      Select a rating from 1 to 5 stars.
-    </span>
-  )}
 
-  {rating === 1 && (
-    <span className="text-red-400">
-      ★☆☆☆☆ &nbsp;Needs Improvement
-    </span>
-  )}
+  {rating > 0 && (
+  <p className="mt-1 text-sm font-medium">
+    {rating === 1 && (
+      <span className="text-red-400">
+        ★☆☆☆☆ &nbsp;Needs Improvement
+      </span>
+    )}
 
-  {rating === 2 && (
-    <span className="text-orange-400">
-      ★★☆☆☆ &nbsp;Fair
-    </span>
-  )}
+    {rating === 2 && (
+      <span className="text-orange-400">
+        ★★☆☆☆ &nbsp;Fair
+      </span>
+    )}
 
-  {rating === 3 && (
-    <span className="text-yellow-400">
-      ★★★☆☆ &nbsp;Good
-    </span>
-  )}
+    {rating === 3 && (
+      <span className="text-yellow-400">
+        ★★★☆☆ &nbsp;Good
+      </span>
+    )}
 
-  {rating === 4 && (
-    <span className="text-lime-400">
-      ★★★★☆ &nbsp;Very Good
-    </span>
-  )}
+    {rating === 4 && (
+      <span className="text-lime-400">
+        ★★★★☆ &nbsp;Very Good
+      </span>
+    )}
 
-  {rating === 5 && (
-    <span className="text-green-400">
-      ★★★★★ &nbsp;Outstanding
-    </span>
-  )}
-</p>
+    {rating === 5 && (
+      <span className="text-green-400">
+        ★★★★★ &nbsp;Outstanding
+      </span>
+    )}
+  </p>
+)}
 
     <input type="hidden" name="rating" value={rating} />
   </div>
@@ -240,14 +249,16 @@ try {
 
 {/* Report Feedback */}
 
-<div className="border-t border-white/10 pt-8 md:pt-10">
+<div className="border-t border-white/10 pt-4 md:pt-5">
+{/*
   <h2 className="mb-6 text-xl font-semibold text-white md:text-2xl">
     Your Feedback for Clearview Operations
   </h2>
+  */}
   </div>
 
 
-  
+  {/*
     <div>
       <label
         htmlFor="standoutRecommendation"
@@ -283,10 +294,11 @@ try {
     className="w-full resize-y rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/40"
   />
 </div>
+*/}
 
 {/* Share Your Testimonial */}
 
-<div className="mt-8 rounded-2xl border border-sky-400/20 bg-sky-400/5 p-6 md:p-8">
+<div className="mt-2 rounded-2xl border border-sky-400/20 bg-sky-400/5 p-4 md:p-5">
   <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Share Your Testimonial
   </h2>
@@ -297,22 +309,22 @@ try {
       htmlFor="testimonial"
       className="mb-2 block text-sm font-medium"
     >
-      Please share your experience working with Clearview Operations. *
+      What was your experience with Clearview Operations? *
     </label>
 
     <textarea
       id="testimonial"
       name="testimonial"
       required
-      rows={6}
-      placeholder="Example: The report was professional, balanced, and provided several actionable recommendations that our team found valuable..."
+      rows={3}
+      placeholder="Example: The report highlighted several things we'd overlooked and gave us practical recommendations we could act on...."
       className="w-full resize-y rounded-xl border border-sky-400/30 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/35 focus:border-sky-400/60"
     />
   </div>
 </div>
 {/* Permissions */}
 
-<div className="border-t border-white/10 pt-8 md:pt-10">
+<div className="border-t border-white/10 pt-4 md:pt-5">
   <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
     Permissions
   </h2>
@@ -323,10 +335,13 @@ try {
 
   </p>
 
+{/*}
   <p className="mb-6 max-w-2xl text-sky-200">
   Your testimonial and business information will never be published
   without your explicit authorization.
 </p>
+*/}
+
 
   <div className="space-y-5">
 
@@ -398,37 +413,40 @@ try {
 
   <div className="mb-8">
     <label className="mb-4 block text-sm font-medium">
-      Would you be interested in learning more about future consulting services?
+      Would you be open to hearing more about future consulting services?
     </label>
 
-    <div className="space-y-3">
+    <div className="flex flex-wrap items-center gap-3">
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="futureConsulting"
           value="Yes"
           className="h-4 w-4 accent-sky-400"
+style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>Yes</span>
       </label>
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="futureConsulting"
           value="Maybe"
           className="h-4 w-4 accent-sky-400"
+          style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>Maybe</span>
       </label>
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="futureConsulting"
           value="Not at this time"
           className="h-4 w-4 accent-sky-400"
+          style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>Not at this time</span>
       </label>
@@ -438,40 +456,42 @@ try {
 
   {/* Follow Up */}
 
-  <div>
+ <div className="mt-8">
     <label className="mb-4 block text-sm font-medium">
-      May we contact you in the future to learn whether any recommendations from
-      your report were implemented?
+      May we follow up later to see if any of the recommendations were useful?
     </label>
 
-    <div className="space-y-3">
+    <div className="flex flex-wrap items-center gap-3">
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="followUp"
           value="Yes"
           className="h-4 w-4 accent-sky-400"
+          style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>Yes</span>
       </label>
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="followUp"
           value="Maybe"
           className="h-4 w-4 accent-sky-400"
+          style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>Maybe</span>
       </label>
 
-      <label className="flex items-center gap-3">
+      <label className="!inline-flex !items-center !gap-3 !mr-8 whitespace-nowrap">
         <input
           type="radio"
           name="followUp"
           value="No"
           className="h-4 w-4 accent-sky-400"
+          style={{ marginRight: "10px", flexShrink: 0 }}
         />
         <span>No</span>
       </label>
@@ -482,7 +502,7 @@ try {
 
 {/* Privacy & Submit */}
 
-<div className="border-t border-white/10 pt-8 md:pt-10">
+<div className="border-t border-white/10 pt-6 md:pt-10">
 
   <h2 className="mb-2 text-xl font-semibold text-white md:text-2xl">
   Privacy & Confidentiality
@@ -491,8 +511,8 @@ try {
   <p className="mb-6 max-w-2xl text-white/60">
 </p>
 
-  <div className="rounded-xl border border-sky-400/20 bg-sky-400/10 p-5">
-    <p className="text-sm leading-7 text-sky-100">
+  <div className="rounded-xl border border-sky-400/20 bg-sky-400/10 p-4 md:p-5">
+    <p className="text-xs leading-5 text-sky-100">
       We value your privacy. Your responses will be reviewed by
       Clearview Operations and will never be published or shared without
       your explicit authorization. Thank you for taking the time to
@@ -501,8 +521,8 @@ try {
     </p>
   </div>
 
-<p className="mt-10 text-center text-lg font-medium text-white/80 italic">
-  Your feedback today helps us deliver even greater value to future businesses.
+<p className="mt-5 text-center text-lg font-medium text-white/80 italic">
+  Your feedback helps us deliver even greater value to future businesses.
 </p>
 
 <div className="sticky bottom-0 -mx-5 mt-8 border-t border-white/10 bg-[#0b1a27]/95 px-5 py-4 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:px-0 md:py-0">
@@ -518,7 +538,7 @@ try {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="w-full rounded-xl bg-sky-500 px-6 py-4 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
+    className="w-full rounded-xl bg-sky-500 px-6 py-3 text-base font-semibold text-white transition duration-300 hover:bg-sky-400 disabled:cursor-not-allowed disabled:opacity-60 md:text-lg"
   >
     {isSubmitting ? (
   <span className="flex items-center justify-center gap-2">
@@ -526,7 +546,7 @@ try {
     Submitting Feedback...
   </span>
 ) : (
-  "Submit Feedback"
+  "Submit Testimonial"
 )}
   </button>
 </div>
