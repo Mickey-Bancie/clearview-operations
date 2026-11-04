@@ -65,7 +65,7 @@ const fieldAudits = [
   },
 
     {
-    location: "Independent Observation",
+    location: "Texas",
     category: "Auto Dealership",
     title: "The Customer Experience Beyond the Showroom",
     description:
@@ -78,7 +78,7 @@ const fieldAudits = [
     image: "/images/clearview-dealership.png",
   },
   {
-    location: "Independent Observation",
+    location: "New York",
     category: "Hospitality",
     title: "The Guest Experience Starts at Check-In",
     description:
