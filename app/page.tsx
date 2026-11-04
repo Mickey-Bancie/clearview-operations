@@ -191,7 +191,8 @@ export default function ClearviewOperationsHomepage() {
 const [lastScrollY, setLastScrollY] = useState(0);
 const [liveTestimonials, setLiveTestimonials] = useState<any[]>([]);
 const [expandedTestimonials, setExpandedTestimonials] = useState<number[]>([]); const testimonialScrollRef = React.useRef<HTMLDivElement>(null);
-const allTestimonials = [...testimonials, ...liveTestimonials];
+const allTestimonials = liveTestimonials;
+const hasTestimonials = allTestimonials.length > 0;
 const [selectedIndustry, setSelectedIndustry] = useState<number | null>(null);
 
 useEffect(() => {
@@ -267,17 +268,19 @@ useEffect(() => {
     setLiveTestimonials(formatted);
   };
 
-  loadTestimonials();
+  loadTestimonials(); 
 }, []);
 
   const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Services", href: "#services" },
-    { label: "About", href: "/about" },
-        { label: "Who We Serve", href: "#serve" },
-    { label: "Results", href: "#results" },
-    { label: "Contact", href: "#contact" },
-  ];
+  { label: "Home", href: "#home" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "/about" },
+  { label: "Who We Serve", href: "#serve" },
+  ...(hasTestimonials
+    ? [{ label: "Results", href: "#results" }]
+    : []),
+  { label: "Contact", href: "#contact" },
+];
 
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-white text-slate-900">
@@ -642,11 +645,11 @@ customer experiences, workflows, and service clarity.
         </div>
       </section>
 
+      {hasTestimonials && (
       <section id="results" className="bg-slate-50 px-6 py-20">
         <div className="mx-auto max-w-7xl">
           <SectionLabel>Client Results</SectionLabel>
           <h2 className="font-serif text-4xl font-black text-slate-700">What Our Clients Say</h2>
-          <p className="mt-5 text-lg text-slate-500">We're building our portfolio with select founding clients. Real results, real businesses, real feedback.</p>
           <div className="relative mt-12">
   <button
     type="button"
@@ -741,6 +744,7 @@ customer experiences, workflows, and service clarity.
           
         </div>
       </section>
+      )}
 
       <section id="contact" className="bg-[#071a35] px-6 py-20 text-white">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-start">
