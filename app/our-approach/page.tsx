@@ -122,7 +122,7 @@ export default function OurApproachPage() {
       <section className="relative flex min-h-[430px] items-center overflow-hidden bg-[#071a35] px-6 py-20 text-white md:min-h-[530px]">
        <>
   <div
-    className="absolute inset-0 z-0 bg-cover bg-center blur-[6px] md:hidden"
+    className="absolute inset-0 z-0 bg-cover bg-[60%_center] blur-[6px] md:hidden"
     style={{
       backgroundImage: "url('/images/clearview-approach-mobile.png')",
     }}
