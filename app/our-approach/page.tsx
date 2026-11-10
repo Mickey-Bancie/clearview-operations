@@ -47,7 +47,7 @@ const fieldAudits = [
       "Service consistency",
     ],
     image:
-  "/images/clearview-coffee-shop.png",
+  "/images/clearview-coffee-shop.png?v=2",
   },
   {
     location: "Northwest Arkansas",
@@ -61,7 +61,7 @@ const fieldAudits = [
       "Operational consistency",
     ],
     image:
-  "/images/clearview-restaurant.png",
+  "/images/clearview-restaurant.png?v=2",
   },
 
     {
