@@ -40,7 +40,7 @@ const fieldAudits = [
     category: "Coffee Shop",
     title: "The Customer Journey Behind Every Cup",
     description:
-      "An independent field observation examining customer interactions, beverage service, and consistency across the ordering experience.",
+  "How customer greetings, order handoffs, and beverage consistency shape the coffee shop experience.",
     insights: [
       "Customer greeting and engagement",
       "Beverage presentation and temperature",
@@ -54,7 +54,7 @@ const fieldAudits = [
     category: "Restaurant",
     title: "When Service Meets Operations",
     description:
-      "An independent restaurant observation exploring the relationship between service timing, the dining environment, and customer experience.",
+  "From the initial welcome, to service timing and staff coordination, every interaction shapes the dining experience.",
     insights: [
       "Service timing and coordination",
       "Dining environment",
@@ -69,7 +69,7 @@ const fieldAudits = [
     category: "Auto Dealership",
     title: "The Customer Experience Beyond the Showroom",
     description:
-      "An independent field observation exploring how customer engagement, sales interactions, and the showroom environment shape the dealership experience.",
+      "What the first moments of a dealership visit reveal about customer engagement, sales communication, and showroom readiness.",
     insights: [
       "Initial greeting and customer engagement",
       "Sales communication and professionalism",
@@ -82,7 +82,7 @@ const fieldAudits = [
     category: "Hospitality",
     title: "The Guest Experience Starts at Check-In",
     description:
-      "An independent hospitality observation examining front desk interactions, check-in processes, and the overall guest experience.",
+      "What the check-in journey reveals about front desk communication, operational consistency, and guest readiness.",
     insights: [
       "Front desk greeting and professionalism",
       "Check-in efficiency and communication",
