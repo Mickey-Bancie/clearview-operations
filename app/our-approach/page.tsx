@@ -305,13 +305,13 @@ export default function OurApproachPage() {
             ))}
           </div>
 
-          <p className="mt-8 text-sm italic text-slate-500">
+     {/*    <p className="mt-8 text-sm italic text-slate-500">
             Field examples are based on independent observations. 
             Images are illustrative. Business identities are withheld, 
             and no client engagement or measurable outcome is implied.
-          </p>
+          </p> */}
         </div>
-      </section>
+      </section> 
 
       {/* CTA */}
       <section className="bg-[#071a35] px-6 py-20 text-center text-white">
