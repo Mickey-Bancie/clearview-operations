@@ -37,6 +37,7 @@ const methodology = [
 const fieldAudits = [
   {
     location: "Florida",
+    href: "/field-notes/florida-coffee-shop",
     category: "Coffee Shop",
     title: "The Customer Journey Behind Every Cup",
     description:
@@ -78,7 +79,7 @@ const fieldAudits = [
     image: "/images/clearview-dealership.png",
   },
   {
-    location: "New York",
+    location: "WashingtonD.C",
     category: "Hospitality",
     title: "The Guest Experience Starts at Check-In",
     description:
@@ -223,7 +224,7 @@ export default function OurApproachPage() {
             Where Observations Become Insights
           </h2>
           <p className="mt-5 max-w-3xl leading-8 text-slate-600">
-            Our independent field observations help us examine real
+            Our field observations help us examine real
             customer journeys and identify opportunities for better
             service delivery and operational consistency.
           </p>
@@ -272,7 +273,33 @@ export default function OurApproachPage() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                 
+
+{("href" in audit && audit.href) && (
+  
+<Link
+  href={audit.href}
+  className="mt-6 inline-flex items-center gap-2 self-start font-semibold"
+  style={{
+    marginTop: "24px",
+    padding: "12px 24px",
+    backgroundColor: "#164B8A",
+    color: "#FFFFFF",
+    border: "1px solid #C6A36B",
+    borderRadius: "9999px",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "10px",
+    textDecoration: "none",
+    width: "fit-content",
+  }}
+>
+  View Field Note
+  <span aria-hidden="true">→</span>
+</Link>
+
+)}  
+                 </div>
                 </div>
               </article>
             ))}
