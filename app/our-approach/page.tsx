@@ -249,7 +249,7 @@ export default function OurApproachPage() {
 
                 <div className="flex flex-1 flex-col p-6 md:p-7">
                   <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
-                    {audit.category} · Independent Observation
+                    {audit.category} {/* · Independent Observation */}
                   </p>
                   <h3 className="mt-3 font-serif text-xl font-bold leading-snug text-slate-800 md:text-[22px]">
                     {audit.title}
