@@ -32,12 +32,14 @@ const naicsCodes = [
   },
 ];
 
+
 const differentiators = [
   "More than eight years of healthcare and enterprise IT experience",
-  "MBA in Business Analytics with technical systems education",
-  "Experience supporting multiple hospital and clinic locations",
-  "Combines technical delivery, process analysis, and customer experience",
+  "MBA in Business Analytics with technical systems expertise",
+  "Experience supporting hospital transitions, clinic expansions, and multi-site infrastructure projects",
+  "Combines project delivery, operational risk management, process improvement, and customer experience",
 ];
+
 
 export default function CapabilitiesPage() {
   return (
@@ -123,31 +125,43 @@ export default function CapabilitiesPage() {
             </h3>
 
             <p className="mt-4 leading-7 text-slate-600">
-              Conducted independent field assessments across hospitality, food
+              Conducted field assessments across hospitality, food
               service, retail, and customer pickup operations in Arkansas,
-              Texas, and Florida. Deliverables included current-state
+              Texas, Florida, and Washington, DC. Deliverables included current-state
               observations, prioritized findings, impact analysis, and
               recommended corrective actions.
             </p>
           </article>
 
-          <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-            <p className="text-sm font-bold uppercase tracking-wider text-blue-600">
-              Key Personnel Experience • 2020–Present
-            </p>
 
-            <h3 className="mt-3 font-serif text-2xl font-black">
-              Healthcare IT Infrastructure & Project Support
-            </h3>
+<article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+  <p className="text-sm font-bold uppercase tracking-wider text-blue-600">
+    Key Personnel Experience • 2020–Present
+  </p>
 
-            <p className="mt-4 leading-7 text-slate-600">
-              Project leadership and technology infrastructure support across
-              hospital systems and outpatient clinics, including coordination
-              of technical, operational, and leadership stakeholders,
-              deployments, expansion initiatives, risks, action items,
-              documentation, and follow-up.
-            </p>
-          </article>
+  <h3 className="mt-3 font-serif text-2xl font-black">
+    Healthcare IT Infrastructure & Project Delivery
+  </h3>
+
+  <p className="mt-4 leading-7 text-slate-600">
+    Key personnel bring hands-on experience supporting healthcare
+    infrastructure, hospital technology transitions, and multi-site
+    clinic deployments. Responsibilities have included coordinating
+    infrastructure requirements with project management offices,
+    obtaining vendor quotations, supporting procurement, preparing
+    change controls and rollback procedures, and executing phased
+    network migrations.
+  </p>
+
+  <p className="mt-4 leading-7 text-slate-600">
+    Additional experience includes critical power redundancy,
+    UPS lifecycle management, connectivity validation, and technical
+    go-live support. This background strengthens Clearview Operations'
+    approach to project coordination, risk mitigation, operational
+    readiness, and business continuity.
+  </p>
+</article>
+
         </div>
       </section>
 
@@ -218,16 +232,43 @@ export default function CapabilitiesPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-8">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-blue-600">
-            Selected Tools & Methods
-          </p>
 
-          <p className="mt-4 text-lg leading-8 text-slate-600">
-            Jira • Microsoft Project • Power BI • Tableau • SQL • Agile •
-            Waterfall • Kanban • Juniper • Cisco
-          </p>
-        </div>
+<div className="mt-12 rounded-3xl border border-slate-200 bg-white p-8">
+  <p className="text-sm font-black uppercase tracking-[0.18em] text-blue-600">
+    Selected Tools & Methods
+  </p>
+
+  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+    {[
+      {
+        title: "Project Delivery",
+        items: "Microsoft Project • Jira • Agile • Waterfall • Kanban",
+      },
+      {
+        title: "Project Controls",
+        items: "Change Control • Risk Assessment • Rollback Planning • Vendor Coordination",
+      },
+      {
+        title: "Analytics & Reporting",
+        items: "Power BI • Tableau • SQL",
+      },
+      {
+        title: "Technology & Operations",
+        items: "Cisco • Juniper • Infrastructure Modernization • UPS Systems • Operational Readiness",
+      },
+    ].map((group) => (
+      <div key={group.title}>
+        <h3 className="text-sm font-bold text-slate-900">
+          {group.title}
+        </h3>
+        <p className="mt-2 leading-7 text-slate-600">
+          {group.items}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
       </section>
 
       {/* CTA */}

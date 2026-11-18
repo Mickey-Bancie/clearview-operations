@@ -63,6 +63,7 @@ const fieldAudits = [
     ],
     image:
   "/images/clearview-restaurant.png",
+  href: "/field-notes/northwest-arkansas-restaurant",
   },
 
     {
@@ -273,10 +274,10 @@ export default function OurApproachPage() {
                         </li>
                       ))}
                     </ul>
-                 
+
 
 {("href" in audit && audit.href) && (
-  
+
 <Link
   href={audit.href}
   className="mt-6 inline-flex items-center gap-2 self-start font-semibold"
@@ -298,20 +299,21 @@ export default function OurApproachPage() {
   <span aria-hidden="true">→</span>
 </Link>
 
-)}  
+)}
                  </div>
                 </div>
               </article>
             ))}
           </div>
 
-     {/*    <p className="mt-8 text-sm italic text-slate-500">
-            Field examples are based on independent observations. 
-            Images are illustrative. Business identities are withheld, 
-            and no client engagement or measurable outcome is implied.
-          </p> */}
+         <p className="mt-8 text-sm italic text-slate-500">
+             Disclaimer: Business identities and proprietary details
+              have been anonymized to honor business privacy.
+              Images are illustrative of the respective industries.
+
+          </p>
         </div>
-      </section> 
+      </section>
 
       {/* CTA */}
       <section className="bg-[#071a35] px-6 py-20 text-center text-white">
