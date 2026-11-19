@@ -80,7 +80,7 @@ const fieldAudits = [
     image: "/images/clearview-dealership.png",
   },
   {
-    location: "Washington D.C",
+    location: "Washington, D.C",
     category: "Hospitality",
     title: "The Guest Experience Starts at Check-In",
     description:
