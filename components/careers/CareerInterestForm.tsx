@@ -302,10 +302,6 @@ and résumé for up to 12 months.
 
 
 <div className="mt-6 flex justify-center">
-  <p className="text-xs text-red-600">
-  Turnstile key loaded:{" "}
-  {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ? "YES" : "NO"}
-</p>
   <Turnstile
   ref={turnstileRef}
     siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
