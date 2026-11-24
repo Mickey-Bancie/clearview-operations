@@ -1002,6 +1002,7 @@ customer experiences, workflows, and service clarity.
             <NextLink href="/about">About</NextLink>
             <a href="#results">Results</a>
             <NextLink href="/capabilities">Capabilities</NextLink>
+            <NextLink href="/careers">Careers</NextLink>
             <a href="#contact">Contact</a>
             
             <NextLink
